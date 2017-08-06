@@ -1,16 +1,38 @@
-@import url('//fonts.googleapis.com/css?family=Roboto');
+$border-color: #ddd;
+$page-height: 500px;
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
+html, body {
+  font-family: 'Helvetica', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-.view {
-  margin: 0;
-  padding: 0;
+// Each vertical component, or page
+.page {
+  height: $page-height;
+  + .page {
+    border-top: solid 1px $border-color;
+  }
+}
+
+// Introduction page
+.intro {
+  height: $page-height;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+    top: 48%;
+  }
+
+  #intro-animation {
+    position: absolute;
+    width: 100%;
+    height: $page-height;
+    z-index: -1;
+  }
 }

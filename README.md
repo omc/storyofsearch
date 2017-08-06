@@ -2,6 +2,14 @@
 
 ### Running Locally
 
+If you don't have node on your system, install via brew:
+
+```
+brew install node
+```
+
+Then clone the repo, setup, and run:
+
 ```sh
 npm install
 npm run dev
@@ -23,8 +31,6 @@ This will build the app and output the files to the `build` directory.
 npm run start
 ```
 This will launch the express server serving content from `build`
-
-## Testin
 
 ### Deploy
 
