@@ -1,5 +1,13 @@
-$border-color: #ddd;
+$border-color: #bbb;
 $page-height: 500px;
+
+$dark-background: #222;
+
+$gutter-size: 20px;
+
+$panel-width: 1240px;
+$panel-width-half: 610px;
+$panel-width-third: 400px;
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -7,11 +15,21 @@ html, body {
   padding: 0;
 }
 
+.storyofsearch {
+  max-width: $panel-width;
+  margin: 0 auto;
+}
+
 // Each vertical component, or page
 .page {
-  height: $page-height;
   + .page {
-    border-top: solid 1px $border-color;
+    margin-top: $gutter-size;
+  }
+
+  &.break {
+    background: $dark-background;
+    height: 150px;
+    color: white;
   }
 }
 
@@ -19,6 +37,11 @@ html, body {
 .intro {
   height: $page-height;
   position: relative;
+
+  // TODO: Remove
+  border: solid 1px $border-color;
+  border-radius: 5px;
+  margin-top: $gutter-size;
 
   h1 {
     position: absolute;
@@ -36,3 +59,68 @@ html, body {
     z-index: -1;
   }
 }
+
+.row {
+  &.two-columns {
+    .column {
+      float: left;
+      width: $panel-width-half;
+      + .column {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  &.three-columns {
+    .column {
+      float: left;
+      width: $panel-width-third;
+      + .column {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.card {
+  border: solid 1px $border-color;
+  border-radius: 5px;
+  height: 200px;
+  padding: $gutter-size;
+}
+
+// Media queries for mobile
+@media (max-width: $panel-width) {
+  .row {
+    &.two-columns {
+      .column {
+        float: none;
+        width: 100%;
+        + .column {
+          margin-left: 0;
+        }
+      }
+    }
+
+    &.three-columns {
+      .column {
+        float: none;
+        width: 100%;
+        + .column {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .column + .column {
+      margin-top: $gutter-size;
+    }
+  }
+}
+////
