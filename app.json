@@ -1,0 +1,6 @@
+{
+  "name": "Story of Search",
+  "description": "Story of Search",
+  "repository": "https://github.com/omc/storyofsearch",
+  "keywords": ["node", "search", "solr", "elasticsearch"]
+}
