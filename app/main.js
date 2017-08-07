@@ -1,4 +1,6 @@
 require("./assets/style.scss");
+require("./assets/interactions.scss");
+
 require("./lib/canvas_helper.js");
 
 window.Index = require("./lib/search.js");
@@ -44,13 +46,17 @@ $canvas(function(g, s) {
     render();
     requestAnimationFrame(loop);
   }
-  window.requestAnimationFrame(loop);
+  // window.requestAnimationFrame(loop);
 
 }, document.getElementById("intro-animation"));
 
+// React components
 
-// var React = require('react');
-// var Chapter1 = require("./chapters/chapter_one/index.js");
+var React = require('react');
+var IndexingAnimation = require("./interactions/indexing.js");
+
+React.render(<IndexingAnimation/>, document.getElementById('index-animation'));
+
 // var Chapter2 = require("./chapters/chapter_two/index.js");
 
 // var App = React.createClass({
@@ -71,4 +77,4 @@ $canvas(function(g, s) {
 //   }
 // });
 
-// React.render(<App/>, document.getElementById('view'));
+// 

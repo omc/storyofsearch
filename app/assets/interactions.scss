@@ -1,0 +1,56 @@
+.indexing {
+
+  height: 400px;
+  table {
+
+    span + span {
+      margin-left: 4px;
+    }
+
+    span.active {
+      color: red;
+    }
+
+    border-spacing: 0;
+    border-collapse: separate;
+
+    width: 100%;
+
+    thead {
+      background: #222;
+      color: #eee;
+      border-radius: 5px;
+      font-weight: thin;
+    }
+
+    tbody {
+    }
+
+    th {
+      text-align: left;
+    }
+
+    tr.active {
+      td {
+        padding: 0;
+        margin: 0;
+        background: #ddd;
+        i {
+          color: red;
+          transition: color 1s;
+          animate: fade-in 1s;
+        }
+      }
+    }
+  }
+
+  .source, .index {
+    width: 49%;
+    float: left;
+  }
+
+  .index {
+    margin-left: 2%;
+  }
+
+}

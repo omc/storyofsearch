@@ -95,6 +95,10 @@ html, body {
   padding: $gutter-size;
 }
 
+.clearfix {
+  clear: both;
+}
+
 // Media queries for mobile
 @media (max-width: $panel-width) {
   .row {
