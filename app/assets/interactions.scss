@@ -1,7 +1,51 @@
+@import "palette";
+
 .indexing {
 
-  height: 400px;
+  .animation {
+    height: 400px;
+    position: relative;
+  }
+
   table {
+
+    $border-color: #bbb;
+    $table-color: #888;
+    $table-radius: 6px;
+
+    border-collapse: collapse;
+    border: 1px solid $border-color;
+    border-radius: $table-radius;
+    box-shadow: 0px 0px 6px #bbb;
+
+    color: #444;
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    td {
+      border-top: solid 1px $border-color;
+      + td {
+        border-left: 1px solid $border-color;
+      }
+    }
+
+    th {
+      font-size: 0.9em;
+      text-transform: uppercase;
+      + th {
+        border-left: 1px solid darken($table-color, 10%);
+      }
+
+      &:first-child {
+        border-radius: $table-radius 0 0 0;
+      }
+      &:last-child {
+        border-radius: 0 $table-radius 0 0;
+      }
+    }
 
     span + span {
       margin-left: 4px;
@@ -17,40 +61,80 @@
     width: 100%;
 
     thead {
-      background: #222;
+      background: $table-color;
       color: #eee;
       border-radius: 5px;
       font-weight: thin;
     }
 
     tbody {
+      tr:last-child {
+        td:first-child {
+          border-radius: 0 0 0 $table-radius;
+        }
+        td:last-child {
+          border-radius: 0 0 $table-radius 0;
+        }
+      }
     }
 
-    th {
-      text-align: left;
-    }
 
     tr.active {
       td {
-        padding: 0;
-        margin: 0;
-        background: #ddd;
+        background: #eee;
         i {
           color: red;
           transition: color 1s;
-          animate: fade-in 1s;
         }
+      }
+      td.term {
+        color: red;
       }
     }
   }
 
+  & .active {
+    table {
+      box-shadow: 0px 0px 6px $blue;
+    }
+  }
+
   .source, .index {
-    width: 49%;
-    float: left;
+    position: absolute;
+  }
+
+  .source {
+    width: 40%;
+    left: 30%;
+    transition: left 0.3s linear;
   }
 
   .index {
-    margin-left: 2%;
+    width: 58%;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+
+  .controls {
+    height: 40px;
+    .button {
+      cursor: pointer;
+      text-align: center;
+      margin: 0 auto;
+      width: 150px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 5px;
+      background: $button-color;
+      color: $button-font-color;
+      font-weight: bold;
+      transition: opacity 1s linear;
+      &:hover {
+        background: red;
+      }
+    }
   }
 
 }

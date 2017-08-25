@@ -46,16 +46,31 @@ $canvas(function(g, s) {
     render();
     requestAnimationFrame(loop);
   }
-  // window.requestAnimationFrame(loop);
-
 }, document.getElementById("intro-animation"));
 
 // React components
 
 var React = require('react');
-var IndexingAnimation = require("./interactions/indexing.js");
+var IndexingAnimation = require("./interactions/indexing.js.jsx");
 
-React.render(<IndexingAnimation/>, document.getElementById('index-animation'));
+var records = [{
+  id: 1,
+  text: "my dog is big"
+},{
+  id: 2,
+  text: "my dog is dog"
+},{
+  id: 3,
+  text: "dog dog dog"
+},{
+  id: 4,
+  text: "dog is my friend"
+},{
+  id: 5,
+  text: "helllo dog"
+}];
+
+React.render(<IndexingAnimation records={records} />, document.getElementById('index-animation'));
 
 // var Chapter2 = require("./chapters/chapter_two/index.js");
 

@@ -3,24 +3,22 @@ var React = require('react');
 module.exports = React.createClass({
 
   render: function () {
-    var postings = this.props.postings
+    var frame = this.props.frame;
+    var postings = frame.postings;
 
-    var active = postings[postings.length - 1];
-    
-    // groupby
     var tree = {};
     postings.forEach((p) => {
       if(!tree.hasOwnProperty(p.term)) {
         tree[p.term] = {};
       }
       tree[p.term][p.id] = (tree[p.term][p.id] || 0) + 1;
-    })
+    });
 
     var keys = Object.keys(tree).sort()
     var rows = keys.map((k) => {
 
       var mod = 1;
-      var active = active.term == k;
+      var active = frame.term == k;
       var docs = tree[k];
 
       var freq = 0;
@@ -29,18 +27,6 @@ module.exports = React.createClass({
         freq += docs[id];
         return <span>&lt;{id},{docs[id]}&gt;</span>
       });
-
-      if(active) {
-        if(mod < 1) {
-          k = "";
-        }
-        if(mod < 2) {
-          freq = "";
-        }
-        if(mod < 3) {
-          locs = locs
-        }
-      }
 
       return (
         <tr className={active ? "active" : ""}>
@@ -53,13 +39,24 @@ module.exports = React.createClass({
       );
     });
 
+    while(rows.length < this.props.rows) {
+      rows.push((
+        <tr>
+          <td className="term">&nbsp;</td>
+          <td className="idf"></td>
+          <td className="tf">
+          </td>
+        </tr>
+      ));
+    }
+
     return (
       <table className="postings">
         <thead>
           <tr>
-            <th>Term</th>
-            <th>Freq</th>
-            <th>Docs</th>
+            <th width="100">Term</th>
+            <th width="50">Freq</th>
+            <th>&lt;Id, Freq&gt;</th>
           </tr>
         </thead>
         <tbody>

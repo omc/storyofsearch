@@ -1,13 +1,4 @@
-$border-color: #bbb;
-$page-height: 500px;
-
-$dark-background: #222;
-
-$gutter-size: 20px;
-
-$panel-width: 1240px;
-$panel-width-half: 610px;
-$panel-width-third: 400px;
+@import "palette";
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -91,7 +82,7 @@ html, body {
 .card {
   border: solid 1px $border-color;
   border-radius: 5px;
-  height: 200px;
+  min-height: 200px;
   padding: $gutter-size;
 }
 
