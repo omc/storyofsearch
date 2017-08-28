@@ -1,15 +1,25 @@
-$border-color: #bbb;
-$page-height: 500px;
+// Color Vars
+$blue: #26ADE4;
+$indigo: #5E5FFC;
 
+// Color Settings
+$button-color: #444;
+$button-font-color: #f7f7f7;
+$border-color: #bbb;
 $dark-background: #222;
 
-$gutter-size: 20px;
-
+// Sizing
+$page-height: 500px;
 $panel-width: 1240px;
 $panel-width-half: 610px;
 $panel-width-third: 400px;
 
-$button-color: #444;
-$button-font-color: #f7f7f7;
+// spacing vars
+$phi: 1.6180339887;
 
-$blue: #26ADE4;
+// Vertical Rhythms
+$gutter-size: 20px;
+
+// Horizontal Rhythms
+$horizontal-rhythm-desktop: 50px;
+$horizontal-rhythm-mobile: 20px;
