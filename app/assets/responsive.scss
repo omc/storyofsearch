@@ -1,9 +1,12 @@
+img {
+  max-width: 100%;
+}
+
 @media (max-width: $panel-width) {
   .mobile-hide {
     display: none;
   }
 }
-
 
 @media (min-width: $panel-width) {
   .desktop-hide {

@@ -25,7 +25,8 @@ module.exports = {
   devServer: {
     // proxy calls to api to our own node server backend
     proxy: {
-      '/api/*': 'http://localhost:5000/'
+      '/api/*': 'http://localhost:5000/',
+      '/art/*': 'http://localhost:5000/'
     }
   },
   module: {
