@@ -2,11 +2,6 @@
 
 .indexing {
 
-  .animation {
-    height: 400px;
-    position: relative;
-  }
-
   table {
 
     $border-color: #bbb;
@@ -96,19 +91,22 @@
     }
   }
 
-  .source, .index {
-    position: absolute;
+  .animation {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 0;
   }
 
   .source {
     width: 40%;
+    position: absolute;
     left: 30%;
-    transition: left 0.3s linear;
+    transition: left 0.25s linear;
   }
 
   .index {
     width: 58%;
-    right: 0;
+    float: right;
     visibility: hidden;
     opacity: 0;
     transition: opacity 1s linear;

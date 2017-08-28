@@ -67,4 +67,4 @@ var records = [{
   text: "dog horse dog dog horse"
 }];
 
-React.render(<IndexingAnimation records={records} interval={500} />, document.getElementById('index-animation'));
+React.render(<IndexingAnimation records={records} interval={300} />, document.getElementById('index-animation'));
