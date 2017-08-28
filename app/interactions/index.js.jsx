@@ -1,37 +1,59 @@
+var _ = require('lodash');
 var React = require('react');
 
 module.exports = React.createClass({
 
   render: function () {
+
+    function emptyRow() {
+      return (
+        <tr>
+          <td className="term">&nbsp;</td>
+          <td className="idf"></td>
+          <td className="tf">
+          </td>
+        </tr>
+      );
+    }
+
     var frame = this.props.frame;
-    var postings = frame.postings;
-
-    var tree = {};
-    postings.forEach((p) => {
-      if(!tree.hasOwnProperty(p.term)) {
-        tree[p.term] = {};
-      }
-      tree[p.term][p.id] = (tree[p.term][p.id] || 0) + 1;
-    });
-
-    var keys = Object.keys(tree).sort()
-    var rows = keys.map((k) => {
-
-      var mod = 1;
+    var terms = _.groupBy(frame.postings, "term");
+    var stage = frame.stage;
+    var rows = Object.keys(terms).map((k) => {
       var active = frame.term == k;
-      var docs = tree[k];
-
+      var freqActive = active && stage > 1;
+      var termActive = active && stage > 0;
+      var docs = _.groupBy(terms[k], "id");
       var freq = 0;
 
-      var locs = Object.keys(docs).map((id) => {
-        freq += docs[id];
-        return <span>&lt;{id},{docs[id]}&gt;</span>
+      // need to group docs by id
+      var locs = Object.keys(docs).map((id, i) => {
+
+        var occurances = docs[id];
+        var term = occurances[occurances.length - 1];
+        var docActive = frame.record_id == id && k == frame.term;
+
+        if(docActive) {
+          if(stage > 1) {
+            freq += occurances.length;
+          } else {
+            freq += occurances.length - 1;
+          }
+          
+          if(stage > 2) {
+            return <span className="active">&lt;{term.id},{occurances.length}&gt;</span>
+          }
+          return <span>&lt;{term.id},{occurances.length - 1}&gt;</span>;
+        }
+
+        freq += occurances.length;
+        return <span>&lt;{term.id},{occurances.length}&gt;</span>
       });
 
       return (
         <tr className={active ? "active" : ""}>
-          <td className="term">{k}</td>
-          <td className="idf">{freq}</td>
+          <td className="term"><span className={termActive ? "active" : ""}>{k}</span></td>
+          <td className="idf"><span className={freqActive ? "active" : ""}>{freq}</span></td>
           <td className="tf">
             {locs}
           </td>
@@ -40,14 +62,7 @@ module.exports = React.createClass({
     });
 
     while(rows.length < this.props.rows) {
-      rows.push((
-        <tr>
-          <td className="term">&nbsp;</td>
-          <td className="idf"></td>
-          <td className="tf">
-          </td>
-        </tr>
-      ));
+      rows.push(emptyRow());
     }
 
     return (

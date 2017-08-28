@@ -3,38 +3,6 @@ var React = require('react');
 var Table = require('./table.js.jsx');
 var Index = require('./index.js.jsx');
 
-
-// var records = [{
-//   id: 1,
-//   text: "my dog is big"
-// },{
-//   id: 2,
-//   text: "my dog is dog"
-// },{
-//   id: 3,
-//   text: "dog dog dog"
-// },{
-//   id: 4,
-//   text: "dog is my friend"
-// },{
-//   id: 5,
-//   text: "helllo dog"
-// }];
-
-// // convert text to [term, id] tuples
-// var tuples = [].concat.apply([], records.map((r) => {
-//   return r.text.split(/\s+/).map((term, idx) => {
-//     return {
-//       id: r.id,
-//       term: term, 
-//       idx: idx
-//     };
-//   });
-// }));
-
-// Animation time per frame
-var interval = 500;
-
 module.exports = React.createClass({
 
   getInitialState: function() {
@@ -130,14 +98,15 @@ module.exports = React.createClass({
   computeIndexingFrame: function(tick) {
     var tuples = this.state.tuples;
     // Determine which panel to focus on via modulo 2
-    var subtick = tick % 4;
+    
     var idx = Math.min(Math.floor(tick / 4), tuples.length - 1);
+    var running = idx < tuples.length - 1;
+    var subtick = running ? (tick % 4) : 3;
 
     // this needs to LAG for the index phase
     var postings = tuples.slice(0, idx + 1);
     var active = tuples[idx];
-    var running = idx < tuples.length - 1;
-
+    
     return _.merge(this.computeIntroFrame(0), {
       database: {
         css: (running && subtick == 0) ? "active" : "",
@@ -152,7 +121,8 @@ module.exports = React.createClass({
           stage: subtick,
           postings: postings,
           term: active.term,
-          record_id: active.id
+          record_id: active.id,
+          token_offset: active.idx
         }
       }
     });
@@ -186,7 +156,7 @@ module.exports = React.createClass({
           tick: this.state.tick + 1
         });      
       })
-    }, interval);
+    }, this.props.interval);
   },
 
   // Add a record to the database

@@ -1,9 +1,6 @@
 require("./assets/style.scss");
 require("./assets/interactions.scss");
-
 require("./lib/canvas_helper.js");
-
-window.Index = require("./lib/search.js");
 
 // Bubble animation
 $canvas(function(g, s) {
@@ -55,41 +52,19 @@ var IndexingAnimation = require("./interactions/indexing.js.jsx");
 
 var records = [{
   id: 1,
-  text: "my dog is big"
+  text: "the dog jumped over the horse"
 },{
   id: 2,
-  text: "my dog is dog"
+  text: "the horse mouth reeks of dog"
 },{
   id: 3,
-  text: "dog dog dog"
+  text: "dog eat dog world"
 },{
   id: 4,
-  text: "dog is my friend"
+  text: "dog is really small horse"
 },{
   id: 5,
-  text: "helllo dog"
+  text: "dog horse dog dog horse"
 }];
 
-React.render(<IndexingAnimation records={records} />, document.getElementById('index-animation'));
-
-// var Chapter2 = require("./chapters/chapter_two/index.js");
-
-// var App = React.createClass({
-//   render: function () {
-//     return (
-//       <div className="storyofsearch">
-//         <div className="intro page">
-//           <h1>The Story of Search</h1>
-//         </div>
-//         <div className="chapter page">
-//           <Chapter1 />
-//         </div>
-//         <div className="chapter page">
-//           <Chapter2 />
-//         </div>
-//       </div>
-//     );
-//   }
-// });
-
-// 
+React.render(<IndexingAnimation records={records} interval={500} />, document.getElementById('index-animation'));
