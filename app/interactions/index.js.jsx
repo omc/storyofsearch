@@ -3,6 +3,23 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+  /*
+  * We take the terms and generate a spanning forrest:
+  *
+  *                +---->offset+meta
+  *                |
+  *      +----->doc+---->offset+meta
+  *      |
+  *  term+----->doc+---->offset+meta
+  *      |
+  *      +----->doc+---->offset+meta
+  *                |
+  *                +---->offset+meta
+  *
+  *
+  * Then leverage each sub-tree as a row in the table.
+  *
+  */
   render: function () {
 
     function emptyRow() {
@@ -26,7 +43,6 @@ module.exports = React.createClass({
       var docs = _.groupBy(terms[k], "id");
       var freq = 0;
 
-      // need to group docs by id
       var locs = Object.keys(docs).map((id, i) => {
 
         var occurances = docs[id];
