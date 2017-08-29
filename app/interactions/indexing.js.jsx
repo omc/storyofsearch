@@ -9,6 +9,7 @@ module.exports = React.createClass({
     return {
       tick: 0,
       scene: null,
+      running: true,
       records: this.props.records,
       tuples: this.generateTuples(this.props.records)
     }
@@ -85,11 +86,6 @@ module.exports = React.createClass({
         style: {
           display: "none"
         }
-      },
-      form: {
-        style: {
-          display: "block"
-        }
       }
     });
   },
@@ -124,11 +120,14 @@ module.exports = React.createClass({
           record_id: active.id,
           token_offset: active.idx
         }
+      },
+      form: {
+        style: {
+          display: "block"
+        }
       }
     });
   },
-
-
 
   // Generate a frame for a given scene and tick
   computeFrame: function(scene, tick) {
@@ -151,11 +150,13 @@ module.exports = React.createClass({
   createIndex: function() {
     this.setScene("intro");
     this.timer = setInterval(() => {
-      requestAnimationFrame(() => {
-        this.setState({
-          tick: this.state.tick + 1
-        });      
-      })
+      if(this.state.running) {
+        requestAnimationFrame(() => {
+          this.setState({
+            tick: this.state.tick + 1
+          });      
+        })
+      }
     }, this.props.interval);
   },
 
@@ -179,6 +180,13 @@ module.exports = React.createClass({
     this.setState({text: event.target.value.toLowerCase()});
   },
 
+  onSlide: function(event) {
+    this.setState({
+      running: false,
+      tick: event.target.value
+    })
+  },
+
   render: function () {
     var frame = this.computeFrame(this.state.scene, this.state.tick);
 
@@ -200,10 +208,18 @@ module.exports = React.createClass({
 
     var controls = (
       <div className="form" style={frame.form.style}>
+        <input className="slider"
+          type="range"
+          value={this.state.tick}
+          min={0}
+          max={this.state.tuples.length * 4}
+          onChange={this.onSlide}
+          onDragEnd={this.onSlideStop}
+          step={1} />
+
         <form onSubmit={this.addRecord}>
           <input type="text" onChange={this.buildRecord} />
         </form>
-
       </div>
     )
 
