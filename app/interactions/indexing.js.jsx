@@ -3,19 +3,58 @@ var React = require('react');
 var Table = require('./table.js.jsx');
 var Index = require('./index.js.jsx');
 
-module.exports = React.createClass({
-
-  getInitialState: function() {
-    return {
-      tick: 0,
-      scene: null,
-      running: true,
-      records: this.props.records,
-      tuples: this.generateTuples(this.props.records)
+const base_frame = {
+  index: {
+    css: "",
+    style: {
+      visibility: "hidden",
+      opacity: 0
+    },
+    data: {
+      postings: []
     }
   },
+  database: {
+    css: "",
+    style: {
+      left: "30%"
+    },
+    data: {}
+  },
+  button: {
+    css: "",
+    style: {
+      display: "block"
+    }
+  },
+  form: {
+    css: "",
+    style: {
+      display: "none"
+    }
+  }
+}
 
-  generateTuples: function(records) {
+
+class IndexingAnimation extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+
+  state = {
+    records: this.props.records,
+    tuples: this.generateTuples(this.props.records),
+
+    // Animation constructs
+    tick: 0,
+    scene: null,
+    running: true,
+    frame: base_frame
+  }
+
+  generateTuples(records) {
     return [].concat.apply([], records.map((r) => {
       return r.text.split(/\s+/).map((term, idx) => {
         return {
@@ -25,52 +64,17 @@ module.exports = React.createClass({
         };
       });
     }));
-  },
-
-  // Staging frame, empty, waiting for input
-  computeStagingFrame: function() {
-    return {
-      index: {
-        css: "",
-        style: {
-          visibility: "hidden",
-          opacity: 0
-        },
-        data: {
-          postings: []
-        }
-      },
-      database: {
-        css: "",
-        style: {
-          left: "30%"
-        },
-        data: {}
-      },
-      button: {
-        css: "",
-        style: {
-          display: "block"
-        }
-      },
-      form: {
-        css: "",
-        style: {
-          display: "none"
-        }
-      }
-    };
-  },
+  }
 
   // Intro frame slides the table over, and presents an empty index
-  computeIntroFrame: function(tick) {
+  computeIntroFrame(tick) {
     // TODO: Move this!
     if(tick > 1) {
       setTimeout(() => {
-        this.setScene("indexing")
+        this.setFrame("indexing", 0)
       }, 1)
     }
-    return _.merge(this.computeStagingFrame(), {
+    return _.merge({}, base_frame, {
       index: {
         style: {
           visibility: "visible",
@@ -88,10 +92,10 @@ module.exports = React.createClass({
         }
       }
     });
-  },
+  }
 
   // Indexing frames show terms being index
-  computeIndexingFrame: function(tick) {
+  computeIndexingFrame(tick) {
     var tuples = this.state.tuples;
     // Determine which panel to focus on via modulo 2
     
@@ -103,7 +107,7 @@ module.exports = React.createClass({
     var postings = tuples.slice(0, idx + 1);
     var active = tuples[idx];
     
-    return _.merge(this.computeIntroFrame(0), {
+    return _.merge({}, this.computeIntroFrame(0), {
       database: {
         css: (running && subtick == 0) ? "active" : "",
         data: {
@@ -127,41 +131,39 @@ module.exports = React.createClass({
         }
       }
     });
-  },
+  }
 
   // Generate a frame for a given scene and tick
-  computeFrame: function(scene, tick) {
-    if(scene == null) {
-      return this.computeStagingFrame();
-    } else if(scene == "intro") {
+  computeFrame(scene, tick) {
+    if(scene == "intro") {
       return this.computeIntroFrame(tick);
     } else if(scene == "indexing") {
       return this.computeIndexingFrame(tick);
     }
-  },
+  }
 
-  setScene: function(scene) {
+  // Set the current frame state
+  setFrame(scene, tick) {
     this.setState({
-      tick: 0,
-      scene: scene
+      tick: tick,
+      scene: scene,
+      frame: this.computeFrame(scene, tick)
     })
-  },
+  }
 
-  createIndex: function() {
-    this.setScene("intro");
+  createIndex() {
+    this.setFrame("intro", 0);
     this.timer = setInterval(() => {
       if(this.state.running) {
         requestAnimationFrame(() => {
-          this.setState({
-            tick: this.state.tick + 1
-          });      
+          this.setFrame(this.state.scene, this.state.tick + 1)    
         })
       }
     }, this.props.interval);
-  },
+  }
 
   // Add a record to the database
-  addRecord: function(event) {
+  addRecord(event) {
     event.preventDefault();
 
     var records = this.state.records;
@@ -174,21 +176,21 @@ module.exports = React.createClass({
       records: records,
       tuples: this.generateTuples(records)
     });
-  },
+  }
 
-  buildRecord: function(event) {
+  buildRecord(event) {
     this.setState({text: event.target.value.toLowerCase()});
-  },
+  }
 
-  onSlide: function(event) {
+  onSlide(event) {
     this.setState({
-      running: false,
-      tick: event.target.value
+      running: false
     })
-  },
+    this.setFrame(this.state.scene, event.target.value);
+  }
 
-  render: function () {
-    var frame = this.computeFrame(this.state.scene, this.state.tick);
+  render() {
+    var frame = this.state.frame;
 
     var index = (
       <div className={"index " + frame.index.css} style={frame.index.style}>
@@ -203,7 +205,7 @@ module.exports = React.createClass({
     );
 
     var button = (
-      <div onClick={this.createIndex} className="button" style={frame.button.style}>Create Index</div>
+      <div onClick={this.createIndex.bind(this)} className="button" style={frame.button.style}>Create Index</div>
     )
 
     var controls = (
@@ -213,12 +215,11 @@ module.exports = React.createClass({
           value={this.state.tick}
           min={0}
           max={this.state.tuples.length * 4}
-          onChange={this.onSlide}
-          onDragEnd={this.onSlideStop}
+          onChange={this.onSlide.bind(this)}
           step={1} />
 
-        <form onSubmit={this.addRecord}>
-          <input type="text" onChange={this.buildRecord} />
+        <form onSubmit={this.addRecord.bind(this)}>
+          <input type="text" onChange={this.buildRecord.bind(this)} />
         </form>
       </div>
     )
@@ -236,4 +237,7 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+
+}
+
+module.exports = IndexingAnimation;
