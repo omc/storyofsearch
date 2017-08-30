@@ -113,21 +113,23 @@
   }
 
   .controls {
-    height: 40px;
+    height: 60px;
     .button {
       cursor: pointer;
       text-align: center;
       margin: 0 auto;
       width: 150px;
-      height: 32px;
-      line-height: 32px;
+      height: 48px;
+      line-height: 48px;
       border-radius: 5px;
       background: $button-color;
       color: $button-font-color;
+      border: solid 1px darken($button-color, 5%);
       font-weight: bold;
       transition: opacity 1s linear;
+      transition: background-color 0.2s linear;
       &:hover {
-        background: red;
+        background: darken($button-color, 7%);
       }
     }
   }
