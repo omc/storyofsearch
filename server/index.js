@@ -5,7 +5,7 @@ var cors = require('cors');
 
 var app = express();
 
-var static_path = path.join(__dirname, './../build');
+var static_path = path.join(__dirname, './../app/assets');
 
 app.enable('trust proxy');
 
@@ -40,5 +40,4 @@ var server = app.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
-
 });
