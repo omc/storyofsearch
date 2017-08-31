@@ -1,6 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {    
+module.exports = {
+
   loaders: [
   // image loader - https://www.npmjs.com/package/image-webpack-loader
   {
@@ -16,11 +17,16 @@ module.exports = {
     exclude: /node_modules/,
     loaders: ['babel-loader?stage=0&optional=runtime'],
   }, 
-  // styles
   {
-    test: /\.[s]?css$/,
-    loader: "style!css!autoprefixer-loader?browsers=last 2 version!sass"
-  }, 
+   test: /\.html$/,
+   loader: 'html'
+  },{
+   test: /\.scss$/,
+   loaders: ["style", "css", "sass"]
+  },{
+   test: /\.css$/,
+   loaders: ["style", "css"]
+  },
   // and font files - embed them if possible
   { 
     test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/font-woff" 

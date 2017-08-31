@@ -162,26 +162,6 @@ class IndexingAnimation extends React.Component {
     }, this.props.interval);
   }
 
-  // Add a record to the database
-  addRecord(event) {
-    event.preventDefault();
-
-    var records = this.state.records;
-    records.push({
-      id: records.length + 1,
-      text: this.state.text
-    });
-    
-    this.setState({
-      records: records,
-      tuples: this.generateTuples(records)
-    });
-  }
-
-  buildRecord(event) {
-    this.setState({text: event.target.value.toLowerCase()});
-  }
-
   onSlide(event) {
     this.setState({
       running: false
@@ -217,10 +197,6 @@ class IndexingAnimation extends React.Component {
           max={this.state.tuples.length * 4}
           onChange={this.onSlide.bind(this)}
           step={1} />
-
-        <form onSubmit={this.addRecord.bind(this)}>
-          <input type="text" onChange={this.buildRecord.bind(this)} />
-        </form>
       </div>
     )
 

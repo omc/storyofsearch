@@ -1,9 +1,7 @@
 @import "palette";
 @import "grid";
 @import "responsive";
-@import "headers";
-
-@import "card";
+@import "interactions";
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -11,6 +9,10 @@ html, body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
+}
+
+.center {
+  text-align: center;
 }
 
 .storyofsearch {
@@ -25,8 +27,6 @@ html, body {
     border: solid 8px $frame-color;
     background-color: $fill-color;
   }
-
-
 }
 
 // Each vertical component, or page
@@ -68,7 +68,6 @@ html, body {
 
 .index-interaction {
   margin-top: 32px;
-  padding: 8px;
   height: auto;
 }
 

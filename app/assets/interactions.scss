@@ -1,89 +1,102 @@
 @import "palette";
 
-.indexing {
+$box-shadow-size: 5px;
 
-  table {
+table.styled {
 
-    $border-color: #bbb;
-    $table-color: #888;
-    $table-radius: 6px;
+  $th-color: #757575;
+  $border-color: #e5e5e5;
+  $table-color: #888;
+  $table-radius: 6px;
 
-    border-collapse: collapse;
-    border: 1px solid $border-color;
-    border-radius: $table-radius;
-    box-shadow: 0px 0px 6px #bbb;
+  border-collapse: collapse;
+  border-radius: $table-radius;
+  box-shadow: 0px 0px $box-shadow-size #bbb;
 
-    color: #444;
+  color: #444;
 
-    th, td {
-      padding: 8px;
-      text-align: left;
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  td {
+    background: white;
+    + td {
+      border-left: 1px solid $border-color;
     }
+  }
 
+  tbody tr + tr {
     td {
       border-top: solid 1px $border-color;
-      + td {
-        border-left: 1px solid $border-color;
+    }
+  }
+
+  th {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    + th {
+      border-left: 1px solid darken($table-color, 10%);
+    }
+
+    &:first-child {
+      border-radius: $table-radius 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 $table-radius 0 0;
+    }
+  }
+
+  span + span {
+    margin-left: 4px;
+  }
+
+  span {
+    transition: color 0.1s;
+  }
+
+  span.active {
+    color: red;
+  }
+
+  border-spacing: 0;
+  border-collapse: separate;
+
+  width: 100%;
+
+  thead {
+    background: $table-color;
+    color: #eee;
+    border-radius: 5px;
+    font-weight: thin;
+  }
+
+  tbody {
+    tr:last-child {
+      td:first-child {
+        border-radius: 0 0 0 $table-radius;
       }
-    }
-
-    th {
-      font-size: 0.9em;
-      text-transform: uppercase;
-      + th {
-        border-left: 1px solid darken($table-color, 10%);
-      }
-
-      &:first-child {
-        border-radius: $table-radius 0 0 0;
-      }
-      &:last-child {
-        border-radius: 0 $table-radius 0 0;
-      }
-    }
-
-    span + span {
-      margin-left: 4px;
-    }
-
-    span {
-      transition: color 0.1s;
-    }
-
-    span.active {
-      color: red;
-    }
-
-    border-spacing: 0;
-    border-collapse: separate;
-
-    width: 100%;
-
-    thead {
-      background: $table-color;
-      color: #eee;
-      border-radius: 5px;
-      font-weight: thin;
-    }
-
-    tbody {
-      tr:last-child {
-        td:first-child {
-          border-radius: 0 0 0 $table-radius;
-        }
-        td:last-child {
-          border-radius: 0 0 $table-radius 0;
-        }
-      }
-    }
-
-
-    tr.active {
-      td {
-        background: #eee;
+      td:last-child {
+        border-radius: 0 0 $table-radius 0;
       }
     }
   }
+
+
+  tr.active {
+    td {
+      background: #eee;
+    }
+  }
+}
+
+
+.indexing {
+
+  
+
+  overflow: visible;
 
   & .active {
     table {
@@ -101,11 +114,13 @@
     width: 40%;
     position: absolute;
     left: 30%;
+    margin-left: $box-shadow-size;
     transition: left 0.25s linear;
   }
 
   .index {
     width: 58%;
+    margin-right: $box-shadow-size;
     float: right;
     visibility: hidden;
     opacity: 0;
@@ -140,3 +155,38 @@
   }
 
 }
+
+.search {
+  margin: 8px;
+  min-height: 320px;
+
+  .term-matches {
+    span {
+      margin-right: 2px;
+    }
+    span + span {
+      margin-left: 2px;
+      &:before {
+        content: "+";
+      }
+    }
+  }
+  .searchbox {
+    margin: 5px;
+    padding-bottom: 8px;
+    input {
+      width: 100%;
+      border: solid 1px $border-color;
+      border-radius: 4px;
+      padding: 8px 8px;
+      font-size: 15pt;
+      color: #555;
+      box-sizing: border-box;
+    }
+  }
+
+  .hits {
+    margin: 5px;
+  }
+}
+

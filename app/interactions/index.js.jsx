@@ -82,7 +82,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <table className="postings">
+      <table className="postings styled">
         <thead>
           <tr>
             <th width="100">Term</th>

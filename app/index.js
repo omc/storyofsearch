@@ -1,11 +1,9 @@
-require("./assets/style.scss");
-require("./assets/interactions.scss");
-require("./lib/canvas_helper.js");
-
-// React components
-
 var React = require('react');
+var ReactDOM = require('react-dom');
 var IndexingAnimation = require("./interactions/indexing.js.jsx");
+var SearchInteraction = require("./interactions/search.js.jsx");
+
+require("./assets/style.scss")
 
 var records = [{
   id: 1,
@@ -24,4 +22,5 @@ var records = [{
   text: "dog horse dog dog horse"
 }];
 
-React.render(<IndexingAnimation records={records} interval={300} />, document.getElementById('index-animation'));
+ReactDOM.render(<IndexingAnimation records={records} interval={300} />, document.getElementById('index-animation'));
+ReactDOM.render(<SearchInteraction records={records} />, document.getElementById('search-interaction'));

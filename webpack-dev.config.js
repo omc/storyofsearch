@@ -11,11 +11,11 @@ var devLoaders = [
 
 module.exports = {
   entry: [
-  // setup the hot mobule loading
-  'webpack-dev-server/client?http://localhost:8080',
-  'webpack/hot/only-dev-server',
-  // our entry file
-  './app/main.js'
+    // setup the hot mobule loading
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    // our entry file
+    './app/main.js'
   ],
   output: {
     path: './build',

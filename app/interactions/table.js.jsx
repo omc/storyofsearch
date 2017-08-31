@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
 
     return (
-      <table className="data-source">
+      <table className="data-source styled">
         <thead>
           <tr>
             <th width="35x">Id</th>
