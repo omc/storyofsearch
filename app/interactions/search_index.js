@@ -43,7 +43,6 @@ class SearchIndex {
 
     // idf is the natural log of total number of docs / number of docs with the term
     let idf = Math.log(this.records.length / (match.postings.length * 1.0));
-    console.log(this.records.length, match.postings.length, idf)
     return match.postings.map((posting) => {
       return {
         id: posting.id,
@@ -75,7 +74,6 @@ class SearchIndex {
       clean.forEach((term) => {
         if(!this.dict.hasOwnProperty(term)) {
           this.dict[term] = {
-            frequency: 0,
             postings: []
           };
         }
@@ -86,8 +84,6 @@ class SearchIndex {
           positions: pos,
           tf: pos.length / terms.length
         });
-
-        this.dict[term].frequency += pos.length;
       })
     });
   }
