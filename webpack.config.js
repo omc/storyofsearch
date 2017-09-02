@@ -1,6 +1,7 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 
@@ -30,7 +31,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
 
-  devtool: "inline-source-map",
+  devtool: development ? "inline-source-map" : false,
   devServer: {
     hot: true,
     contentBase: "./app"
@@ -45,7 +46,6 @@ module.exports = {
         }, {
           loader: "sass-loader"
         }],
-        // use style-loader in development
         fallback: "style-loader"
       })
     },{
@@ -67,13 +67,22 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(["dist"]),
+    new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new HtmlWebpackPlugin({
       template: "./app/index.html",
       filename: "index.html",
-      inject: "body"
+      inject: true
     }),
     new webpack.HotModuleReplacementPlugin(),
-    extractSass
+    extractSass,
+
+    // Copy our static images
+    new CopyWebpackPlugin([{
+     from: './app/assets/art',
+     to: 'assets/art'
+    },{
+     from: './app/assets/favicon.ico'
+    }])
   ]
 }
 
