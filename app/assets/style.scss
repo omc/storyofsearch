@@ -57,7 +57,37 @@ html, body {
     letter-spacing: -.02em;
   }
 
-  img {}
+  img {
+    margin: 2% 0;
+  }
+
+  img.xlg {
+      width: 90%;
+    }
+
+  img.lg {
+      width: 80%;
+    }
+
+  img.md {
+      width: 70%;
+    }
+
+  img.sm {
+      width: 60%;
+    }
+
+  img.xsm {
+      width: 50%;
+    }
+
+  img.xxsm {
+      width: 40%;
+    }
+
+  img.xxxsm {
+      width: 25%;
+    }
 
   p {
     font-size: 1.85em;
@@ -80,8 +110,8 @@ html, body {
 }
 
 .vertical-rule {
-  height: 132px;
+  height: 200px;
   width: 1px;
-  margin: 16px auto;
+  margin: 8% auto;
   background-color: $rule-color;
 }
