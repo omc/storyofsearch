@@ -1,0 +1,66 @@
+p.narration {
+  max-width: 100%;
+  padding: 1em;
+  font-size: $mobile-font-size;
+  font-weight: 400;
+  font-style: italic;
+  font-family: $body-font;
+  max-width: $line-length;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+h1.title {
+  font-size: $mobile-font-size * 3;
+  color: $title-color;
+  margin: 14% 0 6% 0;
+  font-family: $body-font;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -.06em;
+}
+
+h2 {
+  color: $chapter-index-color;
+  text-transform: uppercase;
+  font-size: $mobile-font-size * 2;
+  font-family: $body-font;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  font-size: $mobile-font-size * 1.2;
+  font-family: $body-font;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+@media (min-width: 700px) {
+  p.narration {
+    font-size: $tablet-font-size;
+  }
+
+  h1.title {
+    font-size: $tablet-font-size * 3;
+  }
+
+  h2 { font-size: $tablet-font-size * 2}
+  h3 {font-size: $tablet-font-size * 1.2}
+}
+
+@media (min-width: 900px) {
+  p.narration {
+    font-size: $desktop-font-size;
+  }
+
+  h1.title {
+    font-size: $desktop-font-size * 3;
+  }
+
+  h2 { font-size: $desktop-font-size * 2}
+  h3 {font-size: $desktop-font-size * 1.2}
+}
