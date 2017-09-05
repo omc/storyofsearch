@@ -12,7 +12,7 @@ Then clone the repo, setup, and run:
 
 ```sh
 npm install
-npm run dev
+npm run start
 ```
 
 You can now browse to `http://localhost:8080`
@@ -23,18 +23,11 @@ You can now browse to `http://localhost:8080`
 npm run build
 ```
 
-This will build the app and output the files to the `build` directory.
-
-## Running the server
-
-```sh
-npm run start
-```
-This will launch the express server serving content from `build`
-
 ### Deploy
 
+One will need s3 access to the storyofsearch bucket and aws cli.  Then the command is:
+
 ```
-git push heroku master
+rake publish
 ```
 
