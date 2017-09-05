@@ -1,3 +1,5 @@
+// COLOR =======================================================================
+
 // Color Vars
 $blue: #26ADE4;
 $indigo: #5E5FFC;
@@ -14,24 +16,29 @@ $font-color: #0a55a0;
 $chapter-title-color: #0A55A0;
 $chapter-index-color: #0B6AC3;
 
-
 // Layout colors
 $frame-color: #0ca5e0;
 $fill-color: #fbfdff;
 $rule-color: #4a90e2;
 
-// Sizingpane
-$panel-width: auto;
-$panel-width-half: $panel-width / 2;
-$panel-width-third: $panel-width / 3;
-$page-height: auto;
+// TYPE ========================================================================
 
+// Font
+$body-font: 'Open Sans', sans-serif;
 
+// Color
 $chapter1-text-color: blue;
 $chapter2-text-color: blue;
 $chapter3-text-color: blue;
 
-// spacing vars
+// Text sizing
+$mobile-font-size: 18px;
+$tablet-font-size: 20px;
+$desktop-font-size: 24px;
+
+$line-length: 29em;
+
+// SPACING =====================================================================
 $phi: 1.6180339887;
 
 // Vertical Rhythms
@@ -40,3 +47,11 @@ $gutter-size: 20px;
 // Horizontal Rhythms
 $horizontal-rhythm-desktop: 50px;
 $horizontal-rhythm-mobile: 20px;
+
+// MODULES =====================================================================
+
+// Sizingpane
+$panel-width: auto;
+$panel-width-half: $panel-width / 2;
+$panel-width-third: $panel-width / 3;
+$page-height: auto;
