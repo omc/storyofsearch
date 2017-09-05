@@ -3,6 +3,7 @@
 @import "responsive";
 @import "interactions";
 @import "typography";
+@import "images";
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -21,47 +22,16 @@ html, body {
   overflow: hidden;
 
   .frame {
-    border: solid 2em $frame-color;
-    background-color: $fill-color;
+    // border: solid 2em $frame-color;
+    // background-color: $fill-color;
   }
 }
 
 // Each vertical component, or page
 .page {
   text-align: center;
-
-  img {
-    margin: 2% 0;
-  }
-
-  img.xlg {
-      width: 90%;
-    }
-
-  img.lg {
-      width: 80%;
-    }
-
-  img.md {
-      width: 70%;
-    }
-
-  img.sm {
-      width: 60%;
-    }
-
-  img.xsm {
-      width: 50%;
-    }
-
-  img.xxsm {
-      width: 40%;
-    }
-
-  img.xxxsm {
-      width: 25%;
-    }
-
+  padding: 1em;
+  
   &.break {
     background: $dark-background;
     height: 150px;

@@ -1,0 +1,33 @@
+img {
+  max-width: 100%;
+}
+
+$width-numbers: 10 20 30 40 50 60 70 80 90 100;
+
+@each $number in $width-numbers {
+  $i: index($width-numbers, $number);
+  $percent: percentage(nth($width-numbers, $i)/100);
+  img.img-mobile-#{nth($width-numbers, $i)} {
+    width: $percent;
+  }
+}
+
+@media (min-width: 700px) {
+  @each $number in $width-numbers {
+    $i: index($width-numbers, $number);
+    $percent: percentage(nth($width-numbers, $i)/100);
+    img.img-tablet-#{nth($width-numbers, $i)} {
+      width: $percent;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  @each $number in $width-numbers {
+    $i: index($width-numbers, $number);
+    $percent: percentage(nth($width-numbers, $i)/100);
+    img.img-desktop-#{nth($width-numbers, $i)} {
+      width: $percent;
+    }
+  }
+}
