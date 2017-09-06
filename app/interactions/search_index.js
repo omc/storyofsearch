@@ -5,6 +5,7 @@ class SearchIndex {
   constructor(records, options={}) {
     this.records = records;
     this.dict = {};
+    this.analyzers = options.analyzers || [function(t) { return t; }];
     this.rebuild();
   }
 
@@ -16,15 +17,38 @@ class SearchIndex {
     return Object.keys(this.dict).length;
   }
 
+  record(id) {
+    return _.find(this.records, (r) => {
+      return r.id == id;
+    });
+  }
+
+  tokenSet() {
+    return [].concat.apply([], this.records.map((r) => {
+      return r.text.split(/\s+/).map((term, idx) => {
+        return {
+          id: r.id,
+          term: term,
+          token: this.analyze(term),
+          idx: idx
+        };
+      });
+    }));
+  }
+
+  searchRecords(results) {
+    return results.map((r) => {
+      return this.record(r.id);
+    });
+  }
+
   // Perform a serch for a set of terms
   search(terms) {
     let matches = _.flatten(terms.map((term) => {
       return this.searchTerm(term);
     }));
 
-    let groups = _.groupBy(matches, "id");
-
-    return _.values(groups).map((terms) => {
+    let ranked = _.values(_.groupBy(matches, "id")).map((terms) => {
       return {
         id: terms[0].id,
         rank: _.sumBy(terms, "rank"),
@@ -32,7 +56,7 @@ class SearchIndex {
       }
     })
 
-    return groups;
+    return _.reverse(_.sortBy(ranked, "rank"));
   }
 
   searchTerm(term) {
@@ -86,6 +110,14 @@ class SearchIndex {
         });
       })
     });
+  }
+
+  analyze(token) {
+    let result = token;
+    _.each(this.analyzers, (fn) => {
+      result = fn(result);
+    });
+    return result;
   }
 
 }

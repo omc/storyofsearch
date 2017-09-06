@@ -50,3 +50,14 @@ html, body {
   margin: 8% auto;
   background-color: $rule-color;
 }
+
+.branding {
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+  margin: 32px auto 8px auto;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}

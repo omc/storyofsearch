@@ -49,7 +49,7 @@ table.styled {
   }
 
   span + span {
-    margin-left: 4px;
+    padding-left: 4px;
   }
 
   span {
@@ -93,8 +93,6 @@ table.styled {
 
 
 .indexing {
-
-  
 
   overflow: visible;
 
@@ -186,7 +184,20 @@ table.styled {
   }
 
   .hits {
-    margin: 5px;
+    .source {
+      width: 49%;
+      float: right;
+      margin-right: $box-shadow-size;
+    }
+
+    .index {
+      width: 49%;
+      margin-left: $box-shadow-size;
+      float: left;
+    }
+
+    padding-bottom: $box-shadow-size;
+    overflow: auto;
   }
 }
 

@@ -1,6 +1,5 @@
 var _ = require('lodash');
 var React = require('react');
-var Index = require('./index.js.jsx');
 var SearchIndex = require('./search_index.js');
 
 class RankInteraction extends React.Component {

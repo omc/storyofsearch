@@ -1,10 +1,8 @@
 var _ = require('lodash');
 var React = require('react');
-var Index = require('./index.js.jsx');
 var SearchIndex = require('./search_index.js');
-
 var Table = require('./table.js.jsx');
-var Index = require('./index.js.jsx');
+var Index = require('./index_simple.js.jsx');
 
 
 class SearchInteraction extends React.Component {
@@ -14,66 +12,53 @@ class SearchInteraction extends React.Component {
   }
 
   state = {
-    tokens: [],
-    index: new SearchIndex(this.props.records, {
-      analyzers: [function(token) {
-        return token.toLowerCase();
-      }]
-    })
+    tokens: []
   }
 
   setTerms(event) {
     this.setState({
-      tokens: event.target.value.toLowerCase().split(/\s+/)
+      tokens: event.target.value.split(/\s+/).map((s) => {
+        return this.props.index.analyze(s);
+      })
     });
   }
 
   render() {
 
-    let index = this.state.index;
+    let index = this.props.index;
     let matches = index.search(this.state.tokens);
+    let records = index.searchRecords(matches);
+    let tokens  = index.tokenSet();
 
-    let rows = _.reverse(_.sortBy(matches, "rank")).map((m) => {
-      return (
-        <tr>
-          <td>{m.id}</td>
-          <td>{m.rank.toFixed(3)}</td>
-          <td className="term-matches">
-            {m.matches.map((match) => {
-              return <span><strong>{match.term}:</strong>{match.rank.toFixed(2)}</span>;
-            })}
-          </td>
-        </tr>
-      )
-    });
-
-    if(rows.length == 0) {
-      rows = (
-        <tr>
-          <td colSpan={3} className="center">No documents found</td>
-        </tr>
+    let note = <p className="note"></p>;
+    if(matches.length > 0) {
+      note = (
+        <p className="note">
+          The search engine quickly finds documents for matching tokens, providing a list of results as seen above. 
+        </p>
       );
+    }
+
+
+    let frame = {
+      postings: tokens,
+      matched_tokens: this.state.tokens
     }
 
     return (
       <div className="search">
         <div className="searchbox">
-          <input type="text" onChange={this.setTerms.bind(this)} placeholder="Search..." />
+          <input type="text" onChange={this.setTerms.bind(this)} placeholder="Search for a token below..." />
         </div>
         <div className="hits">
-          <table className="styled">
-            <thead>
-              <tr>
-                <th width="35x">ID</th>
-                <th>Rank</th>
-                <th>Term Ranks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows}
-            </tbody>
-          </table>
+          <div className="index">
+            <Index frame={frame} rows={10} />
+          </div>
+          <div className="source">
+            <Table records={records} frame={frame} rows={10} />
+          </div>
         </div>
+        {note}
       </div>
     );
   }

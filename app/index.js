@@ -1,16 +1,17 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var IndexingAnimation = require("./interactions/indexing.js.jsx");
-var SearchInteraction = require("./interactions/search.js.jsx");
+const React = require('react');
+const ReactDOM = require('react-dom');
+const IndexingAnimation = require("./interactions/indexing.js.jsx");
+const SearchInteraction = require("./interactions/search.js.jsx");
+const SearchIndex = require("./interactions/search_index.js");
 
 require("./assets/style.scss")
 
-var records = [{
+const records = [{
   id: 1,
-  text: "Mexican Joes"
+  text: "dog dog"
 },{
   id: 2,
-  text: "Joes Coffee"
+  text: "horse dog"
 },{
   id: 3,
   text: "dog eat dog world"
@@ -22,5 +23,11 @@ var records = [{
   text: "dog horse dog dog horse"
 }];
 
-ReactDOM.render(<IndexingAnimation records={records} interval={300} />, document.getElementById('index-animation'));
-ReactDOM.render(<SearchInteraction records={records} />, document.getElementById('search-interaction'));
+const index = new SearchIndex(records,{
+  analyzers: [function(s) {
+    return s.toLowerCase();
+  }]
+});
+
+ReactDOM.render(<IndexingAnimation index={index} interval={300} />, document.getElementById('index-animation'));
+ReactDOM.render(<SearchInteraction index={index} />, document.getElementById('search-interaction'));

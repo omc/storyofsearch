@@ -43,7 +43,7 @@ class DataTable extends React.Component {
         <thead>
           <tr>
             <th width="35x" className="center">Id</th>
-            <th>Full Text</th>
+            <th>Text</th>
           </tr>
         </thead>
         <tbody>

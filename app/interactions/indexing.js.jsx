@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var Table = require('./table.js.jsx');
-var Index = require('./index.js.jsx');
+var Index = require('./index_simple.js.jsx');
 
 const base_frame = {
   index: {
@@ -42,28 +42,15 @@ class IndexingAnimation extends React.Component {
     super(props);
   }
 
-
   state = {
-    records: this.props.records,
-    tuples: this.generateTuples(this.props.records),
+    records: this.props.index.records,
+    tuples: this.props.index.tokenSet(),
 
     // Animation constructs
     tick: 0,
     scene: null,
     running: true,
     frame: base_frame
-  }
-
-  generateTuples(records) {
-    return [].concat.apply([], records.map((r) => {
-      return r.text.split(/\s+/).map((term, idx) => {
-        return {
-          id: r.id,
-          term: term, 
-          idx: idx
-        };
-      });
-    }));
   }
 
   // Intro frame slides the table over, and presents an empty index
@@ -99,9 +86,9 @@ class IndexingAnimation extends React.Component {
     var tuples = this.state.tuples;
     // Determine which panel to focus on via modulo 2
     
-    var idx = Math.min(Math.floor(tick / 4), tuples.length - 1);
+    var idx = Math.min(Math.floor(tick / 3), tuples.length - 1);
     var running = idx < tuples.length - 1;
-    var subtick = running ? (tick % 4) : 3;
+    var subtick = running ? (tick % 3) : 2;
 
     // this needs to LAG for the index phase
     var postings = tuples.slice(0, idx + 1);
@@ -194,9 +181,12 @@ class IndexingAnimation extends React.Component {
           type="range"
           value={this.state.tick}
           min={0}
-          max={this.state.tuples.length * 4}
+          max={this.state.tuples.length * 3}
           onChange={this.onSlide.bind(this)}
           step={1} />
+        <p className="notes">
+          During indexing, the search engine analyzes the text from the database, transforming the raw text into a set of "tokens".  The tokens are added to the index with with a reference to each document.  This structure allows for fast search results for a given token.
+        </p>
       </div>
     )
 

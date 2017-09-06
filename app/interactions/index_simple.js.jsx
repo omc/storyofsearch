@@ -27,7 +27,6 @@ class IndexTable extends React.Component {
       return (
         <tr  key={"er-" + key}>
           <td className="term">&nbsp;</td>
-          <td className="idf"></td>
           <td className="tf">
           </td>
         </tr>
@@ -37,7 +36,7 @@ class IndexTable extends React.Component {
     var frame = this.props.frame;
     var terms = _.groupBy(frame.postings, "term");
     var stage = frame.stage;
-    var rows = Object.keys(terms).map((k, i) => {
+    var rows = Object.keys(terms).sort().map((k, i) => {
       var active = frame.term == k;
       var freqActive = active && stage > 1;
       var termActive = active && stage > 0;
@@ -50,22 +49,22 @@ class IndexTable extends React.Component {
         var term = occurances[occurances.length - 1];
         var docActive = frame.record_id == id && k == frame.term;
 
-        freq += 1;
-
-        if(docActive) {          
-          if(stage > 2) {
-            return <span className="active" key={"term" + j}>&lt;{term.id},{occurances.length}&gt;</span>
-          }
-          return <span key={"term" + j}>&lt;{term.id},{occurances.length - 1}&gt;</span>;
+        if(docActive && stage > 1) {          
+          return <span className="delim active" key={"term" + j}>&lt;{term.id}&gt;</span>
         }
 
-        return <span key={"term" + j}>&lt;{term.id},{occurances.length}&gt;</span>
+        return <span className="delim" key={"term" + j}>&lt;{term.id}&gt;</span>
       });
+
+      if(frame.matched_tokens) {
+        active = _.some(frame.matched_tokens, function(m) {
+          return m == k;
+        });
+      }
 
       return (
         <tr className={active ? "active" : ""} key={"term" + i}>
           <td className="term"><span className={termActive ? "active" : ""}>{k}</span></td>
-          <td className="idf"><span className={freqActive ? "active" : ""}>{freq}</span></td>
           <td className="tf">
             {locs}
           </td>
@@ -82,8 +81,7 @@ class IndexTable extends React.Component {
         <thead>
           <tr>
             <th width="100">Token</th>
-            <th width="100">Doc Freq</th>
-            <th>&lt;Id, Freq&gt;</th>
+            <th>Document Ids</th>
           </tr>
         </thead>
         <tbody>
