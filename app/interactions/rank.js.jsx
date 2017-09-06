@@ -3,11 +3,7 @@ var React = require('react');
 var Index = require('./index.js.jsx');
 var SearchIndex = require('./search_index.js');
 
-var Table = require('./table.js.jsx');
-var Index = require('./index.js.jsx');
-
-
-class SearchInteraction extends React.Component {
+class RankInteraction extends React.Component {
 
   constructor(props) {
     super(props);
@@ -55,6 +51,7 @@ class SearchInteraction extends React.Component {
       );
     }
 
+
     return (
       <div className="search">
         <div className="searchbox">
@@ -73,6 +70,7 @@ class SearchInteraction extends React.Component {
               {rows}
             </tbody>
           </table>
+
         </div>
       </div>
     );
@@ -80,4 +78,4 @@ class SearchInteraction extends React.Component {
 
 }
 
-module.exports = SearchInteraction;
+module.exports = RankInteraction;

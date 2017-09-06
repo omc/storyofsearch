@@ -22,6 +22,38 @@ const extractSass = new ExtractTextPlugin({
   disable: development
 });
 
+plugins = [];
+
+if(development) {
+  plugins = [
+    new HtmlWebpackPlugin({
+      template: "./app/index.html",
+      filename: "index.html",
+      inject: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    extractSass
+  ]
+} else {
+  plugins = [
+    new CleanWebpackPlugin(["dist"]),
+    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+    new HtmlWebpackPlugin({
+      template: "./app/index.html",
+      filename: "index.html",
+      inject: true
+    }),
+    extractSass,
+    // Copy our static images
+    new CopyWebpackPlugin([{
+      from: './app/assets/art',
+      to: 'assets/art'
+    },{
+      from: './app/assets/favicon.ico'
+    }])
+  ]
+}
+
 module.exports = {
 
   entry: entries(),
@@ -65,24 +97,6 @@ module.exports = {
     }]
   },
 
-  plugins: [
-    new CleanWebpackPlugin(["dist"]),
-    new webpack.optimize.UglifyJsPlugin({minimize: true}),
-    new HtmlWebpackPlugin({
-      template: "./app/index.html",
-      filename: "index.html",
-      inject: true
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    extractSass,
-
-    // Copy our static images
-    new CopyWebpackPlugin([{
-     from: './app/assets/art',
-     to: 'assets/art'
-    },{
-     from: './app/assets/favicon.ico'
-    }])
-  ]
+  plugins: plugins
 }
 

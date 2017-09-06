@@ -1,7 +1,8 @@
 var _ = require('lodash');
 var React = require('react');
 
-module.exports = React.createClass({
+class IndexTable extends React.Component {
+
 
   /*
   * We take the terms and generate a spanning forrest:
@@ -20,11 +21,11 @@ module.exports = React.createClass({
   * Then leverage each sub-tree as a row in the table.
   *
   */
-  render: function () {
+  render() {
 
-    function emptyRow() {
+    function emptyRow(key) {
       return (
-        <tr>
+        <tr  key={"er-" + key}>
           <td className="term">&nbsp;</td>
           <td className="idf"></td>
           <td className="tf">
@@ -36,38 +37,33 @@ module.exports = React.createClass({
     var frame = this.props.frame;
     var terms = _.groupBy(frame.postings, "term");
     var stage = frame.stage;
-    var rows = Object.keys(terms).map((k) => {
+    var rows = Object.keys(terms).map((k, i) => {
       var active = frame.term == k;
       var freqActive = active && stage > 1;
       var termActive = active && stage > 0;
       var docs = _.groupBy(terms[k], "id");
       var freq = 0;
 
-      var locs = Object.keys(docs).map((id, i) => {
+      var locs = Object.keys(docs).map((id, j) => {
 
         var occurances = docs[id];
         var term = occurances[occurances.length - 1];
         var docActive = frame.record_id == id && k == frame.term;
 
-        if(docActive) {
-          if(stage > 1) {
-            freq += occurances.length;
-          } else {
-            freq += occurances.length - 1;
-          }
-          
+        freq += 1;
+
+        if(docActive) {          
           if(stage > 2) {
-            return <span className="active">&lt;{term.id},{occurances.length}&gt;</span>
+            return <span className="active" key={"term" + j}>&lt;{term.id},{occurances.length}&gt;</span>
           }
-          return <span>&lt;{term.id},{occurances.length - 1}&gt;</span>;
+          return <span key={"term" + j}>&lt;{term.id},{occurances.length - 1}&gt;</span>;
         }
 
-        freq += occurances.length;
-        return <span>&lt;{term.id},{occurances.length}&gt;</span>
+        return <span key={"term" + j}>&lt;{term.id},{occurances.length}&gt;</span>
       });
 
       return (
-        <tr className={active ? "active" : ""}>
+        <tr className={active ? "active" : ""} key={"term" + i}>
           <td className="term"><span className={termActive ? "active" : ""}>{k}</span></td>
           <td className="idf"><span className={freqActive ? "active" : ""}>{freq}</span></td>
           <td className="tf">
@@ -78,15 +74,15 @@ module.exports = React.createClass({
     });
 
     while(rows.length < this.props.rows) {
-      rows.push(emptyRow());
+      rows.push(emptyRow(rows.length));
     }
 
     return (
       <table className="postings styled">
         <thead>
           <tr>
-            <th width="100">Term</th>
-            <th width="50">Freq</th>
+            <th width="100">Token</th>
+            <th width="100">Doc Freq</th>
             <th>&lt;Id, Freq&gt;</th>
           </tr>
         </thead>
@@ -96,4 +92,7 @@ module.exports = React.createClass({
       </table>
     );
   }
-});
+
+}
+
+module.exports = IndexTable;

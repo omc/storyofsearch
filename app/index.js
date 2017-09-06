@@ -7,10 +7,10 @@ require("./assets/style.scss")
 
 var records = [{
   id: 1,
-  text: "the dog jumped over the horse"
+  text: "Mexican Joes"
 },{
   id: 2,
-  text: "the horse mouth reeks of dog"
+  text: "Joes Coffee"
 },{
   id: 3,
   text: "dog eat dog world"

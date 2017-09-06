@@ -180,7 +180,7 @@ class IndexingAnimation extends React.Component {
 
     var database = (
       <div className={"source " + frame.database.css} style={frame.database.style}>
-        <Table records={this.state.records} frame={frame.database.data} />
+        <Table records={this.state.records} frame={frame.database.data} rows={10} />
       </div>
     );
 
