@@ -1,0 +1,29 @@
+$path: './fonts';
+
+@font-face {
+	font-family: "Core Sans G5 45 Regular Italic";
+  src: url("#{$path}/CoreSansGS45RegularItalic.eot") format("eot"),
+		 url("#{$path}/CoreSansGS45RegularItalic.ttf") format("truetype"),
+		 url("#{$path}/CoreSansGS45RegularItalic.woff") format("woff");
+}
+
+$core-45-italic: "Core Sans G5 45 Regular Italic";
+
+
+@font-face {
+	font-family: "Core Sans G5 45 Regular";
+  src: url("#{$path}/CoreSansGS45Regular.eot") format("eot"),
+		 url("#{$path}/CoreSansGS45Regular.ttf") format("truetype"),
+		 url("#{$path}/CoreSansGS45Regular.woff") format("woff");
+}
+
+$core-45-regular: "Core Sans G5 45 Regular";
+
+@font-face {
+	font-family: "Core Sans D 55 Bold Italic";
+  src: url("#{$path}/CoreSansD55Bold-Italic.eot") format("eot"),
+		 url("#{$path}/CoreSansD55Bold-Italic.ttf") format("truetype"),
+		 url("#{$path}/CoreSansD55Bold-Italic.woff") format("woff");
+}
+
+$core-55-bold-italic: "Core Sans D 55 Bold Italic";

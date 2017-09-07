@@ -22,9 +22,10 @@ $fill-color: #fbfdff;
 $rule-color: #4a90e2;
 
 // TYPE ========================================================================
-
+@import "core-sans";
 // Font
-$body-font: 'Open Sans', sans-serif;
+$body-font: $core-45-regular, sans-serif;
+$header-font: $core-55-bold-italic;
 
 // Color
 $chapter1-text-color: blue;

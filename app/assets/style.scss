@@ -31,7 +31,7 @@ html, body {
 .page {
   text-align: center;
   padding: 1em;
-  
+
   &.break {
     background: $dark-background;
     height: 150px;
@@ -46,7 +46,7 @@ html, body {
 
 .vertical-rule {
   height: 200px;
-  width: 1px;
+  width: 2px;
   margin: 8% auto;
   background-color: $rule-color;
 }
