@@ -12,7 +12,7 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: $breakpoint-mobile) {
   @each $number in $width-numbers {
     $i: index($width-numbers, $number);
     $percent: percentage(nth($width-numbers, $i)/100);
@@ -22,7 +22,7 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: $breakpoint-tablet) {
   @each $number in $width-numbers {
     $i: index($width-numbers, $number);
     $percent: percentage(nth($width-numbers, $i)/100);

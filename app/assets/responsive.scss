@@ -1,10 +1,10 @@
-@media (max-width: $panel-width) {
+@media (max-width: $breakpoint-mobile) {
   .mobile-hide {
     display: none;
   }
 }
 
-@media (min-width: $panel-width) {
+@media (min-width: $breakpoint-mobile) {
   .desktop-hide {
     display: none;
   }

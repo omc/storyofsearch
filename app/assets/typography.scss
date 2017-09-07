@@ -37,7 +37,7 @@ h3 {
   text-transform: uppercase;
 }
 
-@media (min-width: 700px) {
+@media (min-width: $breakpoint-mobile) {
   p, .narration {
     font-size: $tablet-font-size;
   }
@@ -46,7 +46,7 @@ h3 {
   h3 {font-size: $tablet-font-size * 1.5;}
 }
 
-@media (min-width: 900px) {
+@media (min-width: $breakpoint-tablet) {
   p, .narration {
     font-size: $desktop-font-size;
   }
