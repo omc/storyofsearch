@@ -30,6 +30,9 @@ html, body {
 .page {
   text-align: center;
   padding: 1em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
   &.break {
     background: $dark-background;
@@ -48,6 +51,12 @@ html, body {
   width: 2px;
   margin: 8% auto;
   background-color: $rule-color;
+}
+
+.footer {
+  padding: 2em;
+  background-color: $footer-background-color;
+  color: $footer-text-color;
 }
 
 .branding {

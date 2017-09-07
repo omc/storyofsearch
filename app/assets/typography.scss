@@ -1,3 +1,7 @@
+.title-header {
+  padding: 4em 0 0;
+}
+
 p {
   font-family: $body-font;
   font-size: $mobile-font-size;
@@ -17,55 +21,36 @@ p {
 }
 
 h1, h2, h3 {
-  font-family: $header-font;
+  font-family: $body-font;
   letter-spacing: 0.3px;
 }
 
-h1.title {
-  font-size: $mobile-font-size + 10;
-  color: $title-color;
-  margin: 14% 0 6% 0;
-  font-weight: 800;
-  font-style: italic;
+h1 {
+  font-size: $mobile-font-size * 2.5;
 }
-
 h2 {
+  font-size: $mobile-font-size * 2;
   color: $chapter-index-color;
-  text-transform: uppercase;
-  font-size: $mobile-font-size + 5;
-  font-family: $body-font;
-  font-weight: 700;
-  margin: 0;
 }
-
 h3 {
-  margin: 0;
-  font-size: $mobile-font-size + 3;
-  font-weight: 600;
+  font-size: $mobile-font-size * 1.5;
+  text-transform: uppercase;
 }
 
 @media (min-width: 700px) {
   p, .narration {
     font-size: $tablet-font-size;
   }
-
-  h1.title {
-    font-size: $tablet-font-size + 10;
-  }
-
-  h2 { font-size: $tablet-font-size}
-  h3 {font-size: $tablet-font-size + 3}
+  h1 { font-size: $tablet-font-size * 2.5;}
+  h2 { font-size: $tablet-font-size * 2;}
+  h3 {font-size: $tablet-font-size * 1.5;}
 }
 
 @media (min-width: 900px) {
   p, .narration {
     font-size: $desktop-font-size;
   }
-
-  h1.title {
-    font-size: $desktop-font-size * 3;
-  }
-
-  h2 { font-size: $desktop-font-size}
-  h3 {font-size: $desktop-font-size * 1.2}
+  h1 { font-size: $desktop-font-size * 2.5;}
+  h2 { font-size: $desktop-font-size * 2;}
+  h3 {font-size: $desktop-font-size * 1.5;}
 }
