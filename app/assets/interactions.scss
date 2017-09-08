@@ -109,15 +109,15 @@ table.styled {
   }
 
   .source {
-    width: 40%;
+    width: 49%;
     position: absolute;
-    left: 30%;
+    left: 25%;
     margin-left: $box-shadow-size;
     transition: left 0.25s linear;
   }
 
   .index {
-    width: 58%;
+    width: 49%;
     margin-right: $box-shadow-size;
     float: right;
     visibility: hidden;

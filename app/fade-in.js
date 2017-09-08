@@ -1,3 +1,4 @@
+var $ = require('jquery');
 // Cache reference to window and animation items
 
 var $animation_els = $('.fade-animation');

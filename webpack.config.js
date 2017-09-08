@@ -35,6 +35,8 @@ if(development) {
     extractSass
   ]
 } else {
+
+  // Production has optimizing plugins
   plugins = [
     new CleanWebpackPlugin(["dist"]),
     new webpack.DefinePlugin({
@@ -42,7 +44,7 @@ if(development) {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+    new webpack.optimize.UglifyJsPlugin({minimize: true, comments: false}),
     new HtmlWebpackPlugin({
       template: "./app/index.html",
       filename: "index.html",

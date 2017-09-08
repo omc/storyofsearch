@@ -17,7 +17,7 @@ const base_frame = {
   database: {
     css: "",
     style: {
-      left: "30%"
+      left: "25%"
     },
     data: {}
   },
