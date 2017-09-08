@@ -1,7 +1,3 @@
-.title-header {
-  padding: 4em 0 0;
-}
-
 p {
   font-family: $body-font;
   font-size: $mobile-font-size;
@@ -29,11 +25,11 @@ h1 {
   font-size: $mobile-font-size * 2.5;
 }
 h2 {
-  font-size: $mobile-font-size * 2;
+  font-size: $mobile-font-size * 1.9;
   color: $chapter-index-color;
 }
 h3 {
-  font-size: $mobile-font-size * 1.5;
+  font-size: $mobile-font-size;
   text-transform: uppercase;
 }
 
@@ -42,8 +38,8 @@ h3 {
     font-size: $tablet-font-size;
   }
   h1 { font-size: $tablet-font-size * 2.5;}
-  h2 { font-size: $tablet-font-size * 2;}
-  h3 {font-size: $tablet-font-size * 1.5;}
+  h2 { font-size: $tablet-font-size * 1.8;}
+  h3 {font-size: $tablet-font-size}
 }
 
 @media (min-width: $breakpoint-tablet) {
@@ -51,6 +47,15 @@ h3 {
     font-size: $desktop-font-size;
   }
   h1 { font-size: $desktop-font-size * 2.5;}
-  h2 { font-size: $desktop-font-size * 2;}
-  h3 {font-size: $desktop-font-size * 1.5;}
+  h2 { font-size: $desktop-font-size * 1.5;}
+  h3 {font-size: $desktop-font-size;}
+}
+
+@media (min-width: $breakpoint-display) {
+  p, .narration {
+    font-size: $display-font-size;
+  }
+  h1 { font-size: $display-font-size * 2.5;}
+  h2 { font-size: $display-font-size * 1.5;}
+  h3 {font-size: $display-font-size;}
 }

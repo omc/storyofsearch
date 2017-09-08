@@ -4,6 +4,7 @@
 @import "interactions";
 @import "typography";
 @import "images";
+@import "header-image";
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -67,5 +68,11 @@ html, body {
   p {
     margin: 0;
     padding: 0;
+  }
+}
+
+@media screen and(min-width: $breakpoint-display) {
+  .page {
+    max-width: 2000px;
   }
 }

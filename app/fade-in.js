@@ -1,6 +1,6 @@
 // Cache reference to window and animation items
 
-var $animation_els = $('.animation');
+var $animation_els = $('.fade-animation');
 var $window = $(window);
 $window.on('scroll resize', check_if_in_view);
 
@@ -25,9 +25,9 @@ function check_if_in_view() {
     // check to see if this current container is within viewport
     if ((el_bottom_position >= window_top_position) && (el_top_position <= window_bottom_position)) {
       // delay fade in for a few ms
-      setTimeout(function(){ $el.addClass('in-view'); }, 200);
+      setTimeout(function(){ $el.addClass('fade-animation-in-view'); }, 200);
     } else {
-      $el.removeClass('in-view');
+      $el.removeClass('fade-animation-in-view');
     }
   })
 };
