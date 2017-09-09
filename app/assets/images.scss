@@ -12,7 +12,7 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: $breakpoint-mobile) {
   @each $number in $width-numbers {
     $i: index($width-numbers, $number);
     $percent: percentage(nth($width-numbers, $i)/100);
@@ -22,7 +22,7 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: $breakpoint-tablet) {
   @each $number in $width-numbers {
     $i: index($width-numbers, $number);
     $percent: percentage(nth($width-numbers, $i)/100);
@@ -30,10 +30,6 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
       width: $percent;
     }
   }
-}
-
-.illustration {
-  // visibility: hidden;
 }
 
 .fadeIn {
@@ -47,7 +43,7 @@ $width-numbers: 10 20 30 40 50 60 70 80 90 100;
   100%{opacity:1}
 }
 
-.illustration {
+.fade-animation {
   position: relative;
   opacity: 0;
 }
@@ -59,7 +55,7 @@ $easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
 $easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 $animation-type: $easeOutQuad;
 
-.illustration.slide-left {
+.fade-animation.slide-left {
   opacity: 0;
   -moz-transition: all $animation-timing $animation-type;
   -webkit-transition: all $animation-timing $animation-type;
@@ -69,10 +65,10 @@ $animation-type: $easeOutQuad;
   -webkit-transform: translate3d(-$animation-offset, 0px, 0px);
   -o-transform: translate(-$animation-offset, 0px);
   -ms-transform: translate(-$animation-offset, 0px);
-  transform: translate3d(-$animation-offset, 0px, 0px);
+  transform: translate3d($animation-offset, 0px, 0px);
 }
 
-.illustration.slide-left.in-view {
+.fade-animation.slide-left.in-view {
   opacity: 1;
   -moz-transform: translate3d(0px, 0px, 0px);
   -webkit-transform: translate3d(0px, 0px, 0px);
@@ -81,7 +77,7 @@ $animation-type: $easeOutQuad;
   transform: translate3d(0px, 0px, 0px);
 }
 
-.illustration.slide-right {
+.fade-animation.slide-right {
   opacity: 0;
   -moz-transition: all $animation-timing $animation-type;
   -webkit-transition: all $animation-timing $animation-type;
@@ -94,7 +90,20 @@ $animation-type: $easeOutQuad;
   transform: translate3d($animation-offset, 0px, 0px);
 }
 
-.illustration.slide-right.in-view {
+.fade-animation.fade-animation-slide-up {
+  opacity: 0;
+  -moz-transition: all $animation-timing $animation-type;
+  -webkit-transition: all $animation-timing $animation-type;
+  -o-transition: all $animation-timing $animation-type;
+  transition: all $animation-timing $animation-type;
+  -moz-transform: translate3d(0px, $animation-offset, 0px);
+  -webkit-transform: translate3d(0px, $animation-offset, 0px);
+  -o-transform: translate($animation-offset, 0px);
+  -ms-transform: translate($animation-offset, 0px);
+  transform: translate3d(0px, $animation-offset, 0px);
+}
+
+.fade-animation.fade-animation-in-view {
   opacity: 1;
   -moz-transform: translate3d(0px, 0px, 0px);
   -webkit-transform: translate3d(0px, 0px, 0px);

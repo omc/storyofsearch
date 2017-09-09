@@ -4,6 +4,7 @@
 @import "interactions";
 @import "typography";
 @import "images";
+@import "header-image";
 
 html, body {
   font-family: 'Helvetica', sans-serif;
@@ -30,6 +31,9 @@ html, body {
 .page {
   text-align: center;
   padding: 1em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
   &.break {
     background: $dark-background;
@@ -50,6 +54,12 @@ html, body {
   background-color: $rule-color;
 }
 
+.footer {
+  padding: 2em;
+  background-color: $footer-background-color;
+  color: $footer-text-color;
+}
+
 .branding {
   text-align: center;
   font-size: 0.9em;
@@ -58,5 +68,11 @@ html, body {
   p {
     margin: 0;
     padding: 0;
+  }
+}
+
+@media screen and(min-width: $breakpoint-display) {
+  .page {
+    max-width: 2000px;
   }
 }

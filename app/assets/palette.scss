@@ -20,12 +20,14 @@ $chapter-index-color: #0B6AC3;
 $frame-color: #0ca5e0;
 $fill-color: #fbfdff;
 $rule-color: #4a90e2;
+$footer-background-color: $blue;
+$footer-text-color: white;
 
 // TYPE ========================================================================
 @import "core-sans";
 // Font
 $body-font: $core-45-regular, sans-serif;
-$header-font: $core-55-bold-italic;
+$header-font: $core-45-regular, sans-serif;
 
 // Color
 $chapter1-text-color: blue;
@@ -36,6 +38,7 @@ $chapter3-text-color: blue;
 $mobile-font-size: 18px;
 $tablet-font-size: 20px;
 $desktop-font-size: 24px;
+$display-font-size: 36px;
 
 $line-length: 29em;
 
@@ -48,6 +51,14 @@ $gutter-size: 20px;
 // Horizontal Rhythms
 $horizontal-rhythm-desktop: 50px;
 $horizontal-rhythm-mobile: 20px;
+
+// RESPONSIVE BREAK POINTS =====================================================
+
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+$breakpoint-lg-desktop: 1440px;
+$breakpoint-display: 2500px;
 
 // MODULES =====================================================================
 
