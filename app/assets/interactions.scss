@@ -136,7 +136,7 @@ table.styled {
     .button {
       cursor: pointer;
       text-align: center;
-      margin: 0 auto;
+      margin: 40px auto;
       width: 150px;
       height: 48px;
       line-height: 48px;
@@ -154,10 +154,15 @@ table.styled {
   }
 
   .slider {
+    margin: 40px 0 20px 0;
     $height: 12px;
     width: 400px;
   }
 
+}
+
+.notes {
+  font-size: 20px;
 }
 
 .search {
