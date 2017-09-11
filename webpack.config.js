@@ -57,6 +57,8 @@ if(development) {
       to: 'assets/art'
     },{
       from: './app/assets/favicon.ico'
+    },{
+      from: './app/google81949edcd268623d.html'
     }])
   ]
 }
