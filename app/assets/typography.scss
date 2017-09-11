@@ -3,6 +3,9 @@ p {
   font-size: $mobile-font-size;
   font-weight: 400;
   letter-spacing: 0.1px;
+  // prevent text orphaning
+  widows: 3;
+  orphans: 3;
 }
 
 .narration {
