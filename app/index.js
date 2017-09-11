@@ -7,22 +7,21 @@ const SearchIndex = require("./interactions/search_index.js");
 require("./fade-in.js");
 require("./assets/style.scss");
 
-const records = [{
-  id: 1,
-  text: "dog dog"
-},{
-  id: 2,
-  text: "horse dog"
-},{
-  id: 3,
-  text: "dog eat dog world"
-},{
-  id: 4,
-  text: "dog is really small horse"
-},{
-  id: 5,
-  text: "dog horse dog dog horse"
-}];
+
+const records = [
+  "chicken pot pie",
+  "raspberry pie",
+  "blueberry pie",
+  "chicken soup",
+  "tomato soup",
+  "raspberry ice cream",
+  "blueberry ice cream"
+].map((text, i) => {
+  return  {
+    id: i + 1,
+    text: text
+  }
+});
 
 const index = new SearchIndex(records,{
   analyzers: [function(s) {

@@ -104,7 +104,6 @@ table.styled {
   & .active {
     table {
       box-shadow: 0px 0px 6px $blue;
-      border: 1px solid #00AAFF;
     }
   }
 
@@ -132,7 +131,6 @@ table.styled {
   }
 
   .controls {
-    height: 60px;
     .button {
       cursor: pointer;
       text-align: center;
@@ -167,7 +165,6 @@ table.styled {
 
 .search {
   margin: 8px;
-  min-height: 320px;
 
   .term-matches {
     span {
