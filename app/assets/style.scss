@@ -27,6 +27,17 @@ html, body {
   }
 }
 
+.chapter3 {
+  position: relative;
+  overflow: hidden;
+  .penelope-pointing {
+    position: absolute;
+    left: 60%;
+    top: 360px;
+    transition: visibility 0.5s linear;
+  }
+}
+
 // Each vertical component, or page
 .page {
   text-align: center;

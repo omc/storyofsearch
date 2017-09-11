@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var $ = require('jquery');
 var React = require('react');
 var Table = require('./table.js.jsx');
 var Index = require('./index_simple.js.jsx');
@@ -147,6 +148,9 @@ class IndexingAnimation extends React.Component {
         })
       }
     }, this.props.interval);
+
+    // Odd hack to work around display issues
+    $(".penelope-pointing").hide();
   }
 
   onSlide(event) {
