@@ -1,4 +1,4 @@
-p {
+body, p {
   font-family: $body-font;
   font-size: $mobile-font-size;
   font-weight: 400;
@@ -19,6 +19,10 @@ p {
   margin-right: auto;
 }
 
+span.heart {
+  color: $pink;
+}
+
 h1, h2, h3 {
   font-family: $body-font;
   letter-spacing: 0.3px;
@@ -34,6 +38,27 @@ h2 {
 h3 {
   font-size: $mobile-font-size - 6;
   text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: $blue;
+  border-bottom: 2px solid $blue;
+  &:hover {
+    color: $indigo;
+    border-color: $indigo;
+  }
+}
+
+.footer {
+  a {
+    color: white;
+    border-color: white;
+    &:hover {
+      color: $blue;
+      border-color: $blue;
+    }
+  }
 }
 
 @media (min-width: $breakpoint-mobile) {

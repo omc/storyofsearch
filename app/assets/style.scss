@@ -54,12 +54,6 @@ html, body {
   background-color: $rule-color;
 }
 
-.footer {
-  padding: 2em;
-  background-color: $footer-background-color;
-  color: $footer-text-color;
-}
-
 .branding {
   text-align: center;
   font-size: 0.9em;
@@ -71,8 +65,36 @@ html, body {
   }
 }
 
+.pink-bg {
+  background-image: url("./art/pink-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-size: contain;
+  height: 140px;
+  > p {
+    margin-top: 3em;
+  }
+}
+
 @media screen and(min-width: $breakpoint-display) {
   .page {
     max-width: 2000px;
+  }
+}
+
+footer.footer {
+  padding: 0.5em 2em;
+  color: $footer-text-color;
+  background: #1e5799; /* Old browsers */
+  background: -moz-linear-gradient(left, $blue 0%, $indigo 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, $blue 0%, $indigo 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, $blue 0%, $indigo 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+
+  .footer-text {
+    font-size: 60%;
+    p {
+      line-height: 1;
+    }
   }
 }
