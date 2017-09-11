@@ -1,6 +1,5 @@
 var _ = require('lodash');
 var React = require('react');
-var SearchIndex = require('./search_index.js');
 var Table = require('./table.js.jsx');
 var Index = require('./index_simple.js.jsx');
 

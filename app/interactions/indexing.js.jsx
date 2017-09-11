@@ -17,7 +17,7 @@ const base_frame = {
   database: {
     css: "",
     style: {
-      left: "30%"
+      left: "25%"
     },
     data: {}
   },
@@ -85,7 +85,7 @@ class IndexingAnimation extends React.Component {
   computeIndexingFrame(tick) {
     var tuples = this.state.tuples;
     // Determine which panel to focus on via modulo 2
-    
+
     var idx = Math.min(Math.floor(tick / 3), tuples.length - 1);
     var running = idx < tuples.length - 1;
     var subtick = running ? (tick % 3) : 2;
@@ -93,7 +93,7 @@ class IndexingAnimation extends React.Component {
     // this needs to LAG for the index phase
     var postings = tuples.slice(0, idx + 1);
     var active = tuples[idx];
-    
+
     return _.merge({}, this.computeIntroFrame(0), {
       database: {
         css: (running && subtick == 0) ? "active" : "",
@@ -143,7 +143,7 @@ class IndexingAnimation extends React.Component {
     this.timer = setInterval(() => {
       if(this.state.running) {
         requestAnimationFrame(() => {
-          this.setFrame(this.state.scene, this.state.tick + 1)    
+          this.setFrame(this.state.scene, this.state.tick + 1)
         })
       }
     }, this.props.interval);
@@ -185,7 +185,7 @@ class IndexingAnimation extends React.Component {
           onChange={this.onSlide.bind(this)}
           step={1} />
         <p className="notes">
-          During indexing, the search engine analyzes the text from the database, transforming the raw text into a set of "tokens".  The tokens are added to the index with with a reference to each document.  This structure allows for fast search results for a given token.
+          During indexing, raw text is transformed into a set of "tokens". These are added to the index with a reference to each document. This structure allows for fast search results for a given token.
         </p>
       </div>
     )

@@ -1,3 +1,4 @@
+var $ = require('jquery');
 // Cache reference to window and animation items
 
 var $animation_els = $('.fade-animation');
@@ -25,7 +26,7 @@ function check_if_in_view() {
     // check to see if this current container is within viewport
     if ((el_bottom_position >= window_top_position) && (el_top_position <= window_bottom_position)) {
       // delay fade in for a few ms
-      setTimeout(function(){ $el.addClass('fade-animation-in-view'); }, 200);
+      setTimeout(function(){ $el.addClass('fade-animation-in-view'); }, 100);
     } else {
       $el.removeClass('fade-animation-in-view');
     }

@@ -10,7 +10,7 @@ p {
 
 .narration {
   max-width: 100%;
-  padding: 1em;
+  padding: 0 1em 1em 1em;
   font-size: $mobile-font-size;
   font-weight: 400;
   font-style: italic;
@@ -32,7 +32,7 @@ h2 {
   color: $chapter-index-color;
 }
 h3 {
-  font-size: $mobile-font-size;
+  font-size: $mobile-font-size - 6;
   text-transform: uppercase;
 }
 
@@ -42,7 +42,7 @@ h3 {
   }
   h1 { font-size: $tablet-font-size * 2.5;}
   h2 { font-size: $tablet-font-size * 1.8;}
-  h3 {font-size: $tablet-font-size}
+  h3 {font-size: $tablet-font-size - 6}
 }
 
 @media (min-width: $breakpoint-tablet) {
@@ -51,7 +51,7 @@ h3 {
   }
   h1 { font-size: $desktop-font-size * 2.5;}
   h2 { font-size: $desktop-font-size * 1.5;}
-  h3 {font-size: $desktop-font-size;}
+  h3 {font-size: $desktop-font-size - 6;}
 }
 
 @media (min-width: $breakpoint-display) {
@@ -60,5 +60,5 @@ h3 {
   }
   h1 { font-size: $display-font-size * 2.5;}
   h2 { font-size: $display-font-size * 1.5;}
-  h3 {font-size: $display-font-size;}
+  h3 {font-size: $display-font-size - 6;}
 }
