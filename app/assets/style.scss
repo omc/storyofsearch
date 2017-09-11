@@ -65,6 +65,17 @@ html, body {
   }
 }
 
+.pink-bg {
+  background-image: url("./art/pink-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-size: contain;
+  height: 140px;
+  > p {
+    margin-top: 3em;
+  }
+}
+
 @media screen and(min-width: $breakpoint-display) {
   .page {
     max-width: 2000px;
