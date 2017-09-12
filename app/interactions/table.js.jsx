@@ -12,8 +12,14 @@ class DataTable extends React.Component {
   }
 
   getRow(data, active, idx, key) {
+    var frame = this.props.frame;
     var text = data.text.split(/\s+/).map((term, i) => {
-      return (active && i == idx) ? <span className="active" key={"term-" + i}>{term}</span> : <span  key={"term-" + i}>{term}</span>
+      var highlight = (active && i == idx);
+      if(frame.matched_tokens && _.some(frame.matched_tokens, function(t) { return t == term; })) {
+        highlight = true;
+      }
+
+      return highlight ? <span className="active" key={"term-" + i}>{term}</span> : <span  key={"term-" + i}>{term}</span>
     });
 
     return (
