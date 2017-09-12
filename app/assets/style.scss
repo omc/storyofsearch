@@ -27,6 +27,11 @@ html, body {
   }
 }
 
+p.padded {
+  text-align: center;
+  padding: 1em;
+}
+
 
 @keyframes penelope {
   from { left: 60%; }
