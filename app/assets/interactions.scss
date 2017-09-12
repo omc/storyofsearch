@@ -91,7 +91,7 @@ table.styled {
 
   tr.active {
     td {
-      background: #eee;
+      background: #FFFDE5;
     }
   }
 }
@@ -103,7 +103,7 @@ table.styled {
 
   & .active {
     table {
-      box-shadow: 0px 0px 6px $blue;
+      box-shadow: 0px 0px 6px #00AAFF;
     }
   }
 
@@ -181,8 +181,8 @@ table.styled {
   }
 
   @keyframes boxy {
-    from { box-shadow: 0 0 0px 0px $blue; }
-    to { box-shadow: 0 0 8px 0px $blue; }
+    from { box-shadow: 0 0 0px 0px #00AAFF; }
+    to { box-shadow: 0 0 8px 0px #00AAFF; }
   }
 
   .searchbox {
@@ -198,7 +198,7 @@ table.styled {
       font-weight: 400;
       color: #4A4A4A;
       box-sizing: border-box;
-      box-shadow: 0 0 10px #e5e5e5;
+      box-shadow: 0 0 10px #00AAFF;
       margin-bottom: 30px;
       outline: 0;
       animation-name: boxy;

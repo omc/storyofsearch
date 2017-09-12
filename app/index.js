@@ -29,7 +29,7 @@ const index = new SearchIndex(records,{
   }]
 });
 
-ReactDOM.render(<IndexingAnimation index={index} interval={480} />, document.getElementById('index-animation'));
+ReactDOM.render(<IndexingAnimation index={index} interval={640} />, document.getElementById('index-animation'));
 ReactDOM.render(<SearchInteraction index={index} />, document.getElementById('search-interaction'));
 
 // Google tag manager
