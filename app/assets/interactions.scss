@@ -114,6 +114,7 @@ table.styled {
   }
 
   .source {
+    z-index: 5;
     width: 49%;
     position: absolute;
     left: 25%;
@@ -122,6 +123,7 @@ table.styled {
   }
 
   .index {
+    z-index: 5;
     width: 49%;
     margin-right: 3px;
     float: right;
@@ -177,6 +179,12 @@ table.styled {
       }
     }
   }
+
+  @keyframes boxy {
+    from { box-shadow: 0 0 0px 0px $blue; }
+    to { box-shadow: 0 0 8px 0px $blue; }
+  }
+
   .searchbox {
     margin: 5px;
     padding-bottom: 8px;
@@ -193,9 +201,15 @@ table.styled {
       box-shadow: 0 0 10px #e5e5e5;
       margin-bottom: 30px;
       outline: 0;
+      animation-name: boxy;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: linear;
     }
+
     input::placeholder {
-    color: #959595;
+      color: #959595;
     }
   }
 

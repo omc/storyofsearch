@@ -27,14 +27,34 @@ html, body {
   }
 }
 
+
+@keyframes penelope {
+  from { left: 60%; }
+  to { left: 63%; }
+}
+
+// For images in interactive areas
 .chapter3 {
   position: relative;
   overflow: hidden;
+
   .penelope-pointing {
     position: absolute;
     left: 60%;
-    top: 360px;
-    transition: visibility 0.5s linear;
+    top: 340px;
+    transition: opacity 0.25s linear;
+    z-index: 2;
+    animation-name: penelope;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+
+  .penelope-inspection {
+    z-index: -1;
+    margin-bottom: -60px;
+    float: left;
   }
 }
 
@@ -54,7 +74,6 @@ html, body {
 }
 
 .index-interaction {
-  margin-top: 32px;
   height: auto;
 }
 
