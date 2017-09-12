@@ -51,10 +51,10 @@ class SearchInteraction extends React.Component {
         </div>
         <div className="hits">
           <div className="index">
-            <Index frame={frame} rows={10} />
+            <Index frame={frame} rows={9} />
           </div>
           <div className="source">
-            <Table records={records} frame={frame} rows={10} />
+            <Table records={records} frame={frame} rows={9} />
           </div>
         </div>
         {note}

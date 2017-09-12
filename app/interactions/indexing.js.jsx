@@ -166,13 +166,13 @@ class IndexingAnimation extends React.Component {
 
     var index = (
       <div className={"index " + frame.index.css} style={frame.index.style}>
-        <Index frame={frame.index.data} rows={10} />
+        <Index frame={frame.index.data} rows={9} />
       </div>
     );
 
     var database = (
       <div className={"source " + frame.database.css} style={frame.database.style}>
-        <Table records={this.state.records} frame={frame.database.data} rows={10} />
+        <Table records={this.state.records} frame={frame.database.data} rows={9} />
       </div>
     );
 

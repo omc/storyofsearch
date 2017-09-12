@@ -29,5 +29,5 @@ task :publish => [:shrink_images, :build] do
   puts "Uploading to S3 (Requires a valid session with bonsai account)"
   system "cd dist && aws s3 sync . s3://storyofsearch"
   puts "Invalidating Cloudfront Caches"
-  system "aws cloudfront create-invalidation --distribution-id E98BQDRSSTCXI --paths /index.html"
+  system "aws cloudfront create-invalidation --distribution-id E98BQDRSSTCXI --paths / /* /index.html"
 end
