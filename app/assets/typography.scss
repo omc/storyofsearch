@@ -40,6 +40,10 @@ h3 {
   text-transform: uppercase;
 }
 
+.sm {
+  font-size: $mobile-font-size - 6;
+}
+
 a {
   text-decoration: none;
   color: $blue;
@@ -53,7 +57,7 @@ a {
 .footer {
   a {
     color: white;
-    border-color: white;
+    border-bottom: 1px solid white;
     &:hover {
       color: $blue;
       border-color: $blue;

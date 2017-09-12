@@ -118,13 +118,13 @@ table.styled {
     width: 49%;
     position: absolute;
     left: 25%;
-    margin-left: $box-shadow-size;
+    margin-left: 3px;
     transition: left 0.25s linear;
   }
 
   .index {
     width: 49%;
-    margin-right: $box-shadow-size;
+    margin-right: 3px;
     float: right;
     visibility: hidden;
     opacity: 0;
@@ -184,13 +184,21 @@ table.styled {
     margin: 5px;
     padding-bottom: 8px;
     input {
-      width: 100%;
-      border: solid 1px $border-color;
-      border-radius: 4px;
-      padding: 8px 8px;
-      font-size: 15pt;
-      color: #555;
+      width: 50%;
+      border: solid 1px #e5e5e5;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 14px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 400;
+      color: #4A4A4A;
       box-sizing: border-box;
+      box-shadow: 0 0 10px #e5e5e5;
+      margin-bottom: 30px;
+      outline: 0;
+    }
+    input::placeholder {
+    color: #959595;
     }
   }
 

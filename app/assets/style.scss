@@ -83,7 +83,8 @@ html, body {
 }
 
 footer.footer {
-  padding: 0.5em 2em;
+  margin-top: 4em;
+  padding: 3em 2em;
   color: $footer-text-color;
   background: #1e5799; /* Old browsers */
   background: -moz-linear-gradient(left, $blue 0%, $indigo 100%); /* FF3.6-15 */
@@ -92,9 +93,18 @@ footer.footer {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 
   .footer-text {
-    font-size: 60%;
     p {
-      line-height: 1;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 24px;
+    }
+    .copyright {
+      color: #A0C7F7;
+      display: block;
+      font-family: 'Inconsolata', monospace;
+      font-size: 12px;
+      margin-top: 4em;
     }
   }
 }
