@@ -49,7 +49,7 @@ class IndexTable extends React.Component {
         var term = occurances[occurances.length - 1];
         var docActive = frame.record_id == id && k == frame.term;
 
-        if(docActive && stage > 1) {          
+        if(docActive && stage > 1) {
           return <span className="delim active" key={"term" + j}>&lt;{term.id}&gt;</span>
         }
 
@@ -80,7 +80,7 @@ class IndexTable extends React.Component {
       <table className="postings styled">
         <thead>
           <tr>
-            <th width="100">Token</th>
+            <th width="80">Token</th>
             <th>Document Ids</th>
           </tr>
         </thead>

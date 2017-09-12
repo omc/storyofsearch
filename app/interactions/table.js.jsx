@@ -42,7 +42,7 @@ class DataTable extends React.Component {
       <table className="data-source styled">
         <thead>
           <tr>
-            <th width="35x" className="center">Id</th>
+            <th width="20" className="center">Id</th>
             <th>Text</th>
           </tr>
         </thead>

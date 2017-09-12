@@ -182,7 +182,7 @@ table.styled {
 
   @keyframes boxy {
     from { box-shadow: 0 0 0px 0px #00AAFF; }
-    to { box-shadow: 0 0 8px 0px #00AAFF; }
+    to { box-shadow: 0 0 14px 0px #00AAFF; }
   }
 
   .searchbox {
@@ -190,7 +190,7 @@ table.styled {
     padding-bottom: 8px;
     input {
       width: 50%;
-      border: solid 1px #e5e5e5;
+      border: 1px solid #6BCDFE;
       border-radius: 6px;
       padding: 14px;
       font-size: 14px;
