@@ -4,7 +4,6 @@ task :build do
 end
 
 task :shrink_images do
-
   opts = [
     "-filter Triangle",
     "-resize '900x100000>'",
@@ -26,7 +25,7 @@ task :shrink_images do
   }
 end
 
-task :publish => :build do
+task :publish => [:shrink_images, :build] do
   puts "Uploading to S3 (Requires a valid session with bonsai account)"
   system "cd dist && aws s3 sync . s3://storyofsearch"
   puts "Invalidating Cloudfront Caches"
