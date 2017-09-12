@@ -33,7 +33,7 @@ class SearchInteraction extends React.Component {
     if(matches.length > 0) {
       note = (
         <p className="note">
-          The search engine quickly finds records for matching tokens. 
+          The search engine quickly finds records for matching tokens.
         </p>
       );
     }
@@ -47,7 +47,7 @@ class SearchInteraction extends React.Component {
     return (
       <div className="search">
         <div className="searchbox">
-          <input type="text" onChange={this.setTerms.bind(this)} placeholder="Search... (try chicken)" />
+          <input type="text" onChange={this.setTerms.bind(this)} placeholder="Search... (try searching for pie!)" />
         </div>
         <div className="hits">
           <div className="index">
