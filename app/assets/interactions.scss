@@ -54,7 +54,7 @@ table.styled {
   }
 
   span {
-    transition: color 0.1s;
+    transition: background-color 0.2s;
   }
 
   span.active {
@@ -104,7 +104,6 @@ table.styled {
   & .active {
     table {
       box-shadow: 0px 0px 6px $blue;
-      border: 1px solid #00AAFF;
     }
   }
 
@@ -115,6 +114,7 @@ table.styled {
   }
 
   .source {
+    z-index: 5;
     width: 49%;
     position: absolute;
     left: 25%;
@@ -123,6 +123,7 @@ table.styled {
   }
 
   .index {
+    z-index: 5;
     width: 49%;
     margin-right: 3px;
     float: right;
@@ -132,7 +133,6 @@ table.styled {
   }
 
   .controls {
-    height: 60px;
     .button {
       cursor: pointer;
       text-align: center;
@@ -167,7 +167,6 @@ table.styled {
 
 .search {
   margin: 8px;
-  min-height: 320px;
 
   .term-matches {
     span {
@@ -180,6 +179,12 @@ table.styled {
       }
     }
   }
+
+  @keyframes boxy {
+    from { box-shadow: 0 0 0px 0px $blue; }
+    to { box-shadow: 0 0 8px 0px $blue; }
+  }
+
   .searchbox {
     margin: 5px;
     padding-bottom: 8px;
@@ -196,9 +201,15 @@ table.styled {
       box-shadow: 0 0 10px #e5e5e5;
       margin-bottom: 30px;
       outline: 0;
+      animation-name: boxy;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: linear;
     }
+
     input::placeholder {
-    color: #959595;
+      color: #959595;
     }
   }
 

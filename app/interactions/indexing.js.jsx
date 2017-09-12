@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var $ = require('jquery');
 var React = require('react');
 var Table = require('./table.js.jsx');
 var Index = require('./index_simple.js.jsx');
@@ -147,6 +148,10 @@ class IndexingAnimation extends React.Component {
         })
       }
     }, this.props.interval);
+
+    // Odd hack to work around display issues
+    $(".penelope-pointing").css('opacity', '0');
+    setTimeout(function() { $(".penelope-pointing").hide(); }, 1000);
   }
 
   onSlide(event) {
@@ -185,7 +190,7 @@ class IndexingAnimation extends React.Component {
           onChange={this.onSlide.bind(this)}
           step={1} />
         <p className="notes">
-          During indexing, raw text is transformed into a set of "tokens". These are added to the index with a reference to each document. This structure allows for fast search results for a given token.
+          Indexing transforms raw text into a set of "tokens". Tokens are added to the index with a reference to each document containing the token.
         </p>
       </div>
     )
