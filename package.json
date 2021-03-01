@@ -1,6 +1,10 @@
 {
   "name": "storyofsearch",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "description": "story of search!!!",
   "main": "app/index.js",
   "scripts": {
